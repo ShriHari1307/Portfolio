@@ -26,10 +26,7 @@ export default function App() {
   const handleScroll = (id) => {
   const section = document.getElementById(id);
   if (section) {
-    // Get the height of the header
     const headerHeight = document.querySelector("header").offsetHeight;
-
-    // Scroll to the section, offsetting by the header's height
     window.scrollTo({
       top: section.offsetTop - headerHeight, 
       behavior: "smooth"
@@ -54,8 +51,6 @@ export default function App() {
       },
       { threshold: 0.5 }
     );
-
-    // Observe each section
     const sections = document.querySelectorAll("section");
     sections.forEach((section) => {
       observer.observe(section);
