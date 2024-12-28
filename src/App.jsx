@@ -148,34 +148,8 @@ export default function App() {
           isDarkMode ? "bg-gray-900 text-white" : "bg-gray-800 text-white"
         }`}
       >
-        <div className="container mx-auto flex flex-col md:flex-row items-center justify-between">
+        <div className="container mx-auto flex flex-col md:flex-row items-center justify-center text-center">
           <p>© {new Date().getFullYear()} Shrihari. All Rights Reserved.</p>
-          <div className="flex space-x-4">
-            <a
-              href="https://github.com/ShriHari1307"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:underline"
-            >
-              GitHub
-            </a>
-            <a
-              href="https://www.linkedin.com/in/tshrihari/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:underline"
-            >
-              LinkedIn
-            </a>
-            <a
-              href="https://hashnode.com/@Shrihari13"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:underline"
-            >
-              Hashnode
-            </a>
-          </div>
         </div>
       </footer>
     </div>
