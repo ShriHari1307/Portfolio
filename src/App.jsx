@@ -3,6 +3,8 @@ import About from "./Component/About";
 import Contact from "./Component/Contact";
 import Projects from "./Component/Projects";
 import { useState, useEffect } from "react";
+import Skills from "./Component/Skills";
+
 
 export default function App() {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -20,14 +22,13 @@ export default function App() {
       document.documentElement.classList.remove("dark");
     }
   }, [isDarkMode]);
-
-  // Handle Scroll to a section
+  
   const handleScroll = (id) => {
     const section = document.getElementById(id);
     if (section) {
-      section.scrollIntoView({ behavior: "smooth", block: "start" });
+      section.scrollIntoView({ behavior: "smooth", block: "nearest" });
     }
-    setIsMenuOpen(false); // Close menu after navigation
+    setIsMenuOpen(false); 
   };
 
   const toggleMenu = () => {
@@ -100,6 +101,14 @@ export default function App() {
             </button>
             <button
               className={`block w-full md:inline hover:text-blue-400 ${
+                activeSection === "skills" ? "text-blue-500" : ""
+              }`}
+              onClick={() => handleScroll("skills")}
+            >
+              Skills
+            </button>
+            <button
+              className={`block w-full md:inline hover:text-blue-400 ${
                 activeSection === "contact" ? "text-blue-500" : ""
               }`}
               onClick={() => handleScroll("contact")}
@@ -125,6 +134,9 @@ export default function App() {
         </section>
         <section id="projects">
           <Projects />
+        </section>
+        <section id="skilld">
+          <Skills/>
         </section>
         <section id="contact">
           <Contact />
