@@ -22,14 +22,22 @@ export default function App() {
       document.documentElement.classList.remove("dark");
     }
   }, [isDarkMode]);
-  
+
   const handleScroll = (id) => {
-    const section = document.getElementById(id);
-    if (section) {
-      section.scrollIntoView({ behavior: "smooth", block: "nearest" });
-    }
-    setIsMenuOpen(false); 
-  };
+  const section = document.getElementById(id);
+  if (section) {
+    // Get the height of the header
+    const headerHeight = document.querySelector("header").offsetHeight;
+
+    // Scroll to the section, offsetting by the header's height
+    window.scrollTo({
+      top: section.offsetTop - headerHeight, 
+      behavior: "smooth"
+    });
+  }
+  setIsMenuOpen(false); 
+};
+
 
   const toggleMenu = () => {
     setIsMenuOpen((prev) => !prev);
