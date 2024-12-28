@@ -43,15 +43,9 @@ export default function Projects({ isDarkMode }) {
             isDarkMode ? "text-gray-200" : "text-gray-800"
           }`}
         >
-          My Projects
+           Projects
         </h2>
-        <p
-          className={`mt-4 text-center ${
-            isDarkMode ? "text-gray-400" : "text-gray-600"
-          }`}
-        >
-          Here are some of my projects.
-        </p>
+
 
         <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
           {projectData.map((project) => (

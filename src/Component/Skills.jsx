@@ -30,7 +30,6 @@ export default function Skills({ isDarkMode }) {
   return (
     <StyledSkills id="skills" isDarkMode={isDarkMode}>
       <h2 className="title">Skills</h2>
-      <p className="subtitle">Here are some of the skills I have acquired:</p>
       <div className="skills-grid">
         {skills.map((skill, index) => (
           <div key={index} className="skill-card">

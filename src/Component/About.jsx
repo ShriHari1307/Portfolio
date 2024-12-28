@@ -2,6 +2,7 @@ import PropTypes from "prop-types"; // Import PropTypes
 import { FaLinkedin } from "react-icons/fa";
 import { FaGithub } from "react-icons/fa";
 import { FaHashnode } from "react-icons/fa6";
+import { SiLeetcode } from "react-icons/si";
 
 function About({ isDarkMode }) {
   return (
@@ -67,31 +68,81 @@ function About({ isDarkMode }) {
             href="https://www.linkedin.com/in/tshrihari/"
             target="_blank"
             rel="noopener noreferrer"
-            className={`transform hover:scale-125 transition duration-300 ease-in-out ${
-              isDarkMode ? "text-blue-400" : "text-blue-700"
-            }`}
+            className="relative group transform hover:scale-125 transition duration-300 ease-in-out"
           >
-            <FaLinkedin size={40} />
+            <FaLinkedin
+              size={40}
+              className={`${
+                isDarkMode ? "text-blue-400" : "text-blue-700"
+              } transition-transform duration-300 group-hover:translate-y-1`}
+            />
+            <span
+              className={`absolute top-full left-1/2 transform -translate-x-1/2 text-center text-sm font-semibold mt-2 opacity-0 group-hover:opacity-100 transition duration-300 z-10 ${
+                isDarkMode ? "text-blue-400" : "text-blue-700"
+              }`}
+            >
+              LinkedIn
+            </span>
           </a>
           <a
             href="https://github.com/ShriHari1307"
             target="_blank"
             rel="noopener noreferrer"
-            className={`transform hover:scale-125 transition duration-300 ease-in-out ${
-              isDarkMode ? "text-white" : "text-black"
-            }`}
+            className="relative group transform hover:scale-125 transition duration-300 ease-in-out"
           >
-            <FaGithub size={40} />
+            <FaGithub
+              size={40}
+              className={`${
+                isDarkMode ? "text-white" : "text-black"
+              } transition-transform duration-300 group-hover:translate-y-1`}
+            />
+            <span
+              className={`absolute top-full left-1/2 transform -translate-x-1/2 text-center text-sm font-semibold mt-2 opacity-0 group-hover:opacity-100 transition duration-300 z-10 ${
+                isDarkMode ? "text-white" : "text-black"
+              }`}
+            >
+              GitHub
+            </span>
           </a>
           <a
             href="https://hashnode.com/@Shrihari13"
             target="_blank"
             rel="noopener noreferrer"
-            className={`transform hover:scale-125 transition duration-300 ease-in-out ${
-              isDarkMode ? "text-white" : "text-black"
-            }`}
+            className="relative group transform hover:scale-125 transition duration-300 ease-in-out"
           >
-            <FaHashnode size={40} />
+            <FaHashnode
+              size={40}
+              className={`${
+                isDarkMode ? "text-white" : "text-black"
+              } transition-transform duration-300 group-hover:translate-y-1`}
+            />
+            <span
+              className={`absolute top-full left-1/2 transform -translate-x-1/2 text-center text-sm font-semibold mt-2 opacity-0 group-hover:opacity-100 transition duration-300 z-10 ${
+                isDarkMode ? "text-white" : "text-black"
+              }`}
+            >
+              Hashnode
+            </span>
+          </a>
+          <a
+            href="https://leetcode.com/u/TSHRIHARI13/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="relative group transform hover:scale-125 transition duration-300 ease-in-out"
+          >
+            <SiLeetcode
+              size={40}
+              className={`${
+                isDarkMode ? "text-white" : "text-black"
+              } transition-transform duration-300 group-hover:translate-y-1`}
+            />
+            <span
+              className={`absolute top-full left-1/2 transform -translate-x-1/2 text-center text-sm font-semibold mt-2 opacity-0 group-hover:opacity-100 transition duration-300 z-10 ${
+                isDarkMode ? "text-white" : "text-black"
+              }`}
+            >
+              LeetCode
+            </span>
           </a>
         </div>
       </div>
