@@ -136,13 +136,13 @@ export default function App() {
           <About isDarkMode={isDarkMode} />
         </section>
         <section id="projects">
-          <Projects />
+          <Projects isDarkMode={isDarkMode}/>
         </section>
         <section id="skilld">
-          <Skills/>
+          <Skills isDarkMode={isDarkMode}/>
         </section>
         <section id="contact">
-          <Contact />
+          <Contact isDarkMode={isDarkMode} />
         </section>
       </main>
     </div>

@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 import {
   FaReact,
   FaDocker,
@@ -10,8 +10,9 @@ import {
   FaJenkins,
 } from "react-icons/fa";
 import { SiKubernetes, SiSpringboot, SiMysql } from "react-icons/si";
+import PropTypes from "prop-types";
 
-export default function Skills() {
+export default function Skills({ isDarkMode }) {
   const skills = [
     { name: "CSS", logo: <FaCss3Alt /> },
     { name: "HTML", logo: <FaHtml5 /> },
@@ -27,7 +28,7 @@ export default function Skills() {
   ];
 
   return (
-    <StyledSkills id="skills">
+    <StyledSkills id="skills" isDarkMode={isDarkMode}>
       <h2 className="title">Skills</h2>
       <p className="subtitle">Here are some of the skills I have acquired:</p>
       <div className="skills-grid">
@@ -47,18 +48,19 @@ const StyledSkills = styled.section`
   flex-direction: column;
   align-items: center;
   padding: 50px 20px;
-  background-color: #f4f4f4;
+  background-color: ${(props) => (props.isDarkMode ? "#1e1e1e" : "#f4f4f4")};
+  color: ${(props) => (props.isDarkMode ? "#e0e0e0" : "#333")};
 
   .title {
     font-size: 2.5rem;
     font-weight: bold;
-    color: #333;
+    color: ${(props) => (props.isDarkMode ? "#ffffff" : "#333")};
     margin-bottom: 10px;
   }
 
   .subtitle {
     font-size: 1.2rem;
-    color: #666;
+    color: ${(props) => (props.isDarkMode ? "#cccccc" : "#666")};
     margin-bottom: 30px;
     text-align: center;
   }
@@ -76,9 +78,10 @@ const StyledSkills = styled.section`
     position: relative;
     width: 150px;
     height: 150px;
-    background: #fff;
+    background: ${(props) => (props.isDarkMode ? "#333333" : "#ffffff")};
     border-radius: 15px;
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 15px
+      ${(props) => (props.isDarkMode ? "rgba(0, 0, 0, 0.6)" : "rgba(0, 0, 0, 0.1)")};
     display: flex;
     justify-content: center;
     align-items: center;
@@ -90,12 +93,13 @@ const StyledSkills = styled.section`
 
   .skill-card:hover {
     transform: translateY(-8px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 15px 30px
+      ${(props) => (props.isDarkMode ? "rgba(0, 0, 0, 0.8)" : "rgba(0, 0, 0, 0.2)")};
   }
 
   .skill-logo {
     font-size: 3rem;
-    color: #0077cc;
+    color: ${(props) => (props.isDarkMode ? "#00aaff" : "#0077cc")};
     transition: opacity 0.3s ease-in-out;
   }
 
@@ -114,7 +118,7 @@ const StyledSkills = styled.section`
     align-items: center;
     font-size: 1.2rem;
     font-weight: bold;
-    color: #333;
+    color: ${(props) => (props.isDarkMode ? "#ffffff" : "#333")};
     opacity: 0;
     transition: opacity 0.3s ease-in-out;
   }
@@ -157,3 +161,6 @@ const StyledSkills = styled.section`
     }
   }
 `;
+Skills.propTypes = {
+    isDarkMode: PropTypes.bool.isRequired,
+  };

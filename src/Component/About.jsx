@@ -8,7 +8,7 @@ function About({ isDarkMode }) {
     <section
       id="about"
       className={`h-screen flex items-center justify-between py-16 px-16 ${
-        isDarkMode ? "bg-gray-800 text-gray-200" : "bg-gray-100 text-gray-800"
+        isDarkMode ? "bg-[#1e1e1e] text-gray-200" : "bg-gray-100 text-gray-800"
       }`}
     >
       <div className="w-1/2 pr-8">
@@ -40,7 +40,7 @@ function About({ isDarkMode }) {
 
         <div className="mt-8 flex space-x-4">
           <a
-            href="public/shri-DevopsResume.pdf" 
+            href="public/shri-DevopsResume.pdf"
             download="shrihari-resume.pdf"
             className="px-6 py-3 bg-blue-500 text-white font-bold rounded-lg shadow-md hover:bg-blue-600 transition duration-300"
           >

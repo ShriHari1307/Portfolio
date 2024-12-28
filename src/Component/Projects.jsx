@@ -1,6 +1,7 @@
+import PropTypes from "prop-types";
 import Card from "./Card";
 
-export default function Projects() {
+export default function Projects({ isDarkMode }) {
 
   const projectData = [
     {
@@ -10,35 +11,47 @@ export default function Projects() {
       previewLink: '#',
       imageUrl: 'public/react-image.png',
       codeLink: '#',
-    },    
+    },
     {
       id: 2,
       title: 'Complete CICD Pipeline using Jenkins',
       description: 'Created a complete CICD pipeline using jenkins and other code quality tools like Sonarqube and Nexus oss repository and deployed in EKS',
-      imageUrl:'public/pipeline.png',
+      imageUrl: 'public/pipeline.png',
       previewLink: '#',
       codeLink: '#',
     },
     {
       id: 3,
       title: 'Deploying 3 tier application in Kubernetes',
-      description: 'Deployed a complete 3 tier architecture application in AWS EKS by creating docker files and deploying them ',
-      imageUrl:'Kubernetes-with-Azure.jpg',
+      description: 'Deployed a complete 3 tier architecture application in AWS EKS by creating docker files and deploying them',
+      imageUrl: 'Kubernetes-with-Azure.jpg',
       previewLink: '#',
       codeLink: '#',
     },
-    
-    
   ];
 
   return (
     <section
       id="projects"
-      className="bg-gray-200 flex flex-col items-center justify-center py-12"
+      className={`${
+        isDarkMode ? "bg-gray-950 text-gray-200" : "bg-gray-200 text-gray-800"
+      } flex flex-col items-center justify-center py-12`}
     >
       <div className="w-full max-w-6xl px-4">
-        <h2 className="text-3xl font-bold text-center">My Projects</h2>
-        <p className="mt-4 text-center">Here are some of my projects.</p>
+        <h2
+          className={`text-3xl font-bold text-center ${
+            isDarkMode ? "text-gray-200" : "text-gray-800"
+          }`}
+        >
+          My Projects
+        </h2>
+        <p
+          className={`mt-4 text-center ${
+            isDarkMode ? "text-gray-400" : "text-gray-600"
+          }`}
+        >
+          Here are some of my projects.
+        </p>
 
         <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
           {projectData.map((project) => (
@@ -49,6 +62,7 @@ export default function Projects() {
               previewLink={project.previewLink}
               codeLink={project.codeLink}
               imageUrl={project.imageUrl}
+              isDarkMode={isDarkMode} // Pass the dark mode state to the Card component if needed
             />
           ))}
         </div>
@@ -56,3 +70,6 @@ export default function Projects() {
     </section>
   );
 }
+Projects.propTypes = {
+  isDarkMode: PropTypes.bool.isRequired,
+};
