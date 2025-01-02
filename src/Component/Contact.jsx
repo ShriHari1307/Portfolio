@@ -19,10 +19,10 @@ export default function Contact({ isDarkMode }) {
     e.preventDefault();
     emailjs
       .send(
-        "service_i0csveq", // Replace with your EmailJS Service ID
-        "template_gb94tnv", // Replace with your EmailJS Template ID
+        "service_i0csveq",
+        "template_gb94tnv",
         formData,
-        "GWQFdfsMr_Tjdvjkn" // Replace with your EmailJS Public Key
+        "GWQFdfsMr_Tjdvjkn"
       )
       .then(
         (response) => {
@@ -56,7 +56,7 @@ export default function Contact({ isDarkMode }) {
             isDarkMode ? "text-gray-100" : "text-gray-800"
           }`}
         >
-          Contact Us
+          Contact Me
         </h2>
         <form onSubmit={handleSubmit} className="space-y-6">
           <div>
@@ -138,7 +138,9 @@ export default function Contact({ isDarkMode }) {
         {success && (
           <p
             className={`mt-4 text-center p-2 rounded-md transition-opacity duration-1000 ${
-              isDarkMode ? "bg-green-900 text-green-300" : "bg-green-100 text-green-600"
+              isDarkMode
+                ? "bg-green-900 text-green-300"
+                : "bg-green-100 text-green-600"
             }`}
           >
             Message sent successfully!

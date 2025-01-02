@@ -4,6 +4,7 @@ import Contact from "./Component/Contact";
 import Projects from "./Component/Projects";
 import { useState, useEffect } from "react";
 import Skills from "./Component/Skills";
+import Education from "./Component/Education";
 
 export default function App() {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -42,12 +43,15 @@ export default function App() {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
+          console.log('Section intersecting:', entry.target.id, 'isIntersecting:', entry.isIntersecting);
           if (entry.isIntersecting) {
-            setActiveSection(entry.target.id);
+            // Make sure we're using the exact same case as in the button comparison
+            setActiveSection(entry.target.id.toLowerCase());
+            console.log('Setting active section to:', entry.target.id.toLowerCase());
           }
         });
       },
-      { threshold: 0.5 }
+      { threshold: 0.2 }  // Reduced threshold to make it more sensitive
     );
     const sections = document.querySelectorAll("section");
     sections.forEach((section) => {
@@ -94,6 +98,14 @@ export default function App() {
             </button>
             <button
               className={`block w-full md:inline hover:text-blue-400 ${
+                activeSection === "education" ? "text-blue-500" : ""
+              }`}
+              onClick={() => handleScroll("education")}
+            >
+              Education
+            </button>
+            <button
+              className={`block w-full md:inline hover:text-blue-400 ${
                 activeSection === "projects" ? "text-blue-500" : ""
               }`}
               onClick={() => handleScroll("projects")}
@@ -133,10 +145,13 @@ export default function App() {
         <section id="about">
           <About isDarkMode={isDarkMode} />
         </section>
+        <section id="education">
+          <Education handleScroll={handleScroll} />
+        </section>
         <section id="projects">
           <Projects isDarkMode={isDarkMode} />
         </section>
-        <section id="skilld">
+        <section id="skills">
           <Skills isDarkMode={isDarkMode} />
         </section>
         <section id="contact">

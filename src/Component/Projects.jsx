@@ -39,7 +39,7 @@ export default function Projects({ isDarkMode }) {
     >
       <div className="w-full max-w-6xl px-4">
         <h2
-          className={`text-3xl font-bold text-center ${
+          className={`text-4xl font-bold text-center ${
             isDarkMode ? "text-gray-200" : "text-gray-800"
           }`}
         >
