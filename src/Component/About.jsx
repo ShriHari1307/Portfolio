@@ -41,8 +41,9 @@ function About({ isDarkMode }) {
 
         <div className="mt-8 flex space-x-4">
           <a
-            href="public/shri-DevopsResume.pdf"
-            download="shrihari-resume.pdf"
+            href="https://drive.google.com/file/d/1AEpVnXWGXYeHRIAkUVA_nvsqSi8mlJmB/view?usp=sharing"
+            target="_blank"
+            rel="noopener noreferrer"
             className="px-6 py-3 bg-blue-500 text-white font-bold rounded-lg shadow-md hover:bg-blue-600 transition duration-300"
           >
             Get My Resume

@@ -34,7 +34,7 @@ export default function Projects({ isDarkMode }) {
     <section
       id="projects"
       className={`${
-        isDarkMode ? "bg-gray-950 text-gray-200" : "bg-gray-200 text-gray-800"
+        isDarkMode ? "bg-[#1e1e1e] text-gray-200" : "bg-gray-100 text-gray-800"
       } flex flex-col items-center justify-center py-12`}
     >
       <div className="w-full max-w-6xl px-4">

@@ -146,7 +146,7 @@ export default function App() {
           <About isDarkMode={isDarkMode} />
         </section>
         <section id="education">
-          <Education handleScroll={handleScroll} />
+          <Education handleScroll={handleScroll} isDarkMode={isDarkMode} />
         </section>
         <section id="projects">
           <Projects isDarkMode={isDarkMode} />

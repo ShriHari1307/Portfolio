@@ -63,7 +63,6 @@
         items: [
           { name: "Docker", logo: <FaDocker /> },
           { name: "Kubernetes", logo: <SiKubernetes /> },
-          { name: "Jenkins", logo: <FaJenkins /> },
           { name: "Linux", logo: <FaLinux /> },
           { name: "Ansible", logo: <SiAnsible /> },
         ],
