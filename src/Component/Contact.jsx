@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import { useState } from 'react';
 import emailjs from 'emailjs-com';
 
-function Contact({ isDarkMode }) {
+export default function Contact({ isDarkMode }) {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -49,7 +49,7 @@ function Contact({ isDarkMode }) {
   }
 
   return (
-    <div className={`min-h-screen p-6 ${isDarkMode ? 'bg-[#1e1e1e]' : 'bg-gray-50'}`}>
+    <div className={`min-h-screen p-6 ${isDarkMode ? 'bg-[#1e1e1e]' : 'bg-gray-100'}`}>
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="text-center mb-12">
@@ -229,5 +229,3 @@ function Contact({ isDarkMode }) {
 Contact.propTypes = {
   isDarkMode: PropTypes.bool.isRequired,
 };
-
-export default Contact;
