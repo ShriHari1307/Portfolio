@@ -6,6 +6,7 @@ import { useState, useEffect } from "react";
 import Skills from "./Component/Skills";
 import Education from "./Component/Education";
 import Preloader from "./Component/Preloader";
+import Certifications from "./Component/Certifications";
 
 export default function App() {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -49,10 +50,14 @@ export default function App() {
   useEffect(() => {
     const handleScrollSpy = () => {
       const sections = document.querySelectorAll("section");
-      const scrollPosition = window.scrollY + window.innerHeight / 2;
-
+      const header = document.querySelector("header");
+      const headerHeight = header ? header.offsetHeight : 0;
+      const scrollPosition =
+        window.scrollY +
+        headerHeight +
+        (window.innerWidth < 768 ? 50 : window.innerHeight / 2);
       sections.forEach((section) => {
-        const sectionTop = section.offsetTop;
+        const sectionTop = section.offsetTop - headerHeight;
         const sectionBottom = sectionTop + section.offsetHeight;
 
         if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
@@ -61,11 +66,36 @@ export default function App() {
       });
     };
 
-    window.addEventListener("scroll", handleScrollSpy);
-    // Initial check
-    handleScrollSpy();
+    const setInitialScrollPosition = () => {
+      const headerHeight = document.querySelector("header")?.offsetHeight || 0;
+      const aboutSection = document.getElementById("about");
 
-    return () => window.removeEventListener("scroll", handleScrollSpy);
+      if (aboutSection) {
+        window.scrollTo({
+          top: aboutSection.offsetTop - headerHeight,
+          behavior: "smooth",
+        });
+      }
+    };
+
+    // Set initial scroll position when the page loads
+    setInitialScrollPosition();
+
+    // Add scroll event listener to handle dynamic changes while scrolling
+    window.addEventListener("scroll", handleScrollSpy);
+
+    // Adding resize event listener for screen size changes (optional)
+    const handleResize = () => {
+      setInitialScrollPosition(); // Adjust scroll position based on screen size change
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    // Cleanup event listeners on component unmount
+    return () => {
+      window.removeEventListener("scroll", handleScrollSpy);
+      window.removeEventListener("resize", handleResize);
+    };
   }, []);
 
   const navItems = [
@@ -73,6 +103,7 @@ export default function App() {
     { id: "education", label: "Education" },
     { id: "projects", label: "Projects" },
     { id: "skills", label: "Skills" },
+    { id: "certifications", label: "Certification" },
     { id: "contact", label: "Contact" },
   ];
 
@@ -126,18 +157,21 @@ export default function App() {
             </div>
           </header>
 
-          <main className="pt-20 md:pt-16">
+          <main className="pt-20 md:pt-16 sm:pt-0 sm:scroll-padding-top">
             <section id="about" className="min-h-screen">
               <About isDarkMode={isDarkMode} />
             </section>
             <section id="education" className="min-h-screen">
               <Education handleScroll={handleScroll} isDarkMode={isDarkMode} />
             </section>
-            <section id="projects" className="min-h-screen">
+            <section id="projects">
               <Projects isDarkMode={isDarkMode} />
             </section>
             <section id="skills" className="min-h-screen">
               <Skills isDarkMode={isDarkMode} />
+            </section>
+            <section id="certifications" className="min-h-screen">
+              <Certifications isDarkMode={isDarkMode} />
             </section>
             <section id="contact" className="min-h-screen">
               <Contact isDarkMode={isDarkMode} />

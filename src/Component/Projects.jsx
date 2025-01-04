@@ -30,24 +30,22 @@ export default function Projects({ isDarkMode }) {
     },
   ];
 
-  return (
+   return (
     <section
       id="projects"
       className={`${
         isDarkMode ? "bg-black text-gray-200" : "bg-gradient-to-r from-[#f0f4f8] to-[#e1e8ee] text-gray-800"
-      } flex flex-col items-center justify-center py-12`}
+      } flex flex-col items-center justify-center py-16 pb-0`} // Added pb-0 to remove bottom padding
     >
       <div className="w-full max-w-6xl px-4">
         <h2
-          className={`text-4xl font-bold text-center ${
+          className={`text-4xl font-bold text-center mb-12 ${
             isDarkMode ? "text-gray-200" : "text-gray-800"
           }`}
         >
-           Projects
+          Projects
         </h2>
-
-
-        <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mb-0"> {/* Added mb-0 */}
           {projectData.map((project) => (
             <Card
               key={project.id}
@@ -56,7 +54,7 @@ export default function Projects({ isDarkMode }) {
               previewLink={project.previewLink}
               codeLink={project.codeLink}
               imageUrl={project.imageUrl}
-              isDarkMode={isDarkMode} 
+              isDarkMode={isDarkMode}
             />
           ))}
         </div>

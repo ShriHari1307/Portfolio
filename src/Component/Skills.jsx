@@ -77,7 +77,6 @@ export default function Skills({ isDarkMode }) {
       items: [
         { name: "Docker", logo: <FaDocker /> },
         { name: "Kubernetes", logo: <SiKubernetes /> },
-        { name: "Linux", logo: <FaLinux /> },
         { name: "Ansible", logo: <SiAnsible /> },
       ],
     },
