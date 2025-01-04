@@ -8,7 +8,7 @@ function About({ isDarkMode }) {
   return (
     <section
       id="about"
-      className={`flex flex-col md:flex-row items-center justify-between min-h-screen px-4 sm:px-8 lg:px-16 ${
+      className={`flex flex-col md:flex-row items-center justify-between min-h-screen px-4 sm:px-8 pt-[75px] lg:px-16  ${
         isDarkMode
           ? "bg-black text-gray-200"
           : "bg-gradient-to-r from-[#f0f4f8] to-[#e1e8ee] text-gray-800"

@@ -109,7 +109,7 @@ export default function Skills({ isDarkMode }) {
 
   return (
     <section id="skills">
-      <StyledSkills id="skills" isDarkMode={isDarkMode}>
+      <StyledSkills isDarkMode={isDarkMode}>
         <h2 className="title">Skills</h2>
         <div className="skills-container">
           {skills.map((category, index) => (
@@ -143,9 +143,9 @@ const StyledSkills = styled.section`
   .title {
     font-size: 2.5rem;
     font-weight: bold;
-    color: ${(props) => (props.isDarkMode ? "#ffffff" : "#333")};
     margin-bottom: 20px;
     text-align: center;
+    color: ${(props) => (props.isDarkMode ? "#ffffff" : "#333")};
   }
 
   .skills-container {
@@ -160,10 +160,10 @@ const StyledSkills = styled.section`
 
   .category-title {
     font-size: 1.8rem;
-    font-weight: bold;
-    color: ${(props) => (props.isDarkMode ? "#ffffff" : "#333")};
     margin-bottom: 20px;
     text-align: center;
+    font-weight: bold;
+    color: ${(props) => (props.isDarkMode ? "#ffffff" : "#333")};
   }
 
   .skills-grid {
@@ -175,7 +175,6 @@ const StyledSkills = styled.section`
   }
 
   .skill-card {
-    position: relative;
     width: 160px;
     height: 160px;
     background: ${(props) => (props.isDarkMode ? "#333333" : "#ffffff")};
@@ -184,46 +183,40 @@ const StyledSkills = styled.section`
       ${(props) =>
         props.isDarkMode ? "rgba(0, 0, 0, 0.6)" : "rgba(0, 0, 0, 0.1)"};
     display: flex;
-    justify-content: center;
-    align-items: center;
     flex-direction: column;
-    transition: all 0.3s ease-in-out;
-    overflow: hidden;
+    align-items: center;
+    justify-content: center;
+    position: relative;
     cursor: pointer;
-    padding: 10px;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  }
+
+  .skill-logo {
+    font-size: 3rem;
+    transition: filter 0.3s ease-in-out;
+    color: ${(props) => (props.isDarkMode ? "#00aaff" : "#0077cc")};
+  }
+
+  .skill-name {
+    position: absolute;
+    bottom: 10px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    opacity: 0;
+    color: ${(props) => (props.isDarkMode ? "#ffffff" : "#333")};
+    text-align: center;
+    transition: opacity 0.3s ease-in-out;
   }
 
   .skill-card:hover {
-    transform: translateY(-8px);
+    transform: scale(1.1);
     box-shadow: 0 15px 30px
       ${(props) =>
         props.isDarkMode ? "rgba(0, 0, 0, 0.8)" : "rgba(0, 0, 0, 0.2)"};
   }
 
-  .skill-logo {
-    font-size: 3rem;
-    color: ${(props) => (props.isDarkMode ? "#00aaff" : "#0077cc")};
-    transition: opacity 0.3s ease-in-out;
-  }
-
   .skill-card:hover .skill-logo {
-    opacity: 0.3;
-  }
-
-  .skill-name {
-    position: absolute;
-    bottom: 5px;
-    left: 0;
-    right: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 1.1rem;
-    font-weight: bold;
-    color: ${(props) => (props.isDarkMode ? "#ffffff" : "#333")};
-    opacity: 0;
-    transition: opacity 0.3s ease-in-out;
-    padding: 5px;
+    filter: blur(3px);
   }
 
   .skill-card:hover .skill-name {
@@ -231,21 +224,17 @@ const StyledSkills = styled.section`
   }
 
   @media (max-width: 768px) {
-    .title {
-      font-size: 2rem;
-    }
-
-    .category-title {
-      font-size: 1.5rem;
-    }
-
-    .skill-card {
-      width: 130px;
-      height: 130px;
-    }
-
     .skill-name {
-      font-size: 1rem;
+      opacity: 1;
+      bottom: 5px;
+    }
+
+    .skill-card:hover {
+      transform: none;
+    }
+
+    .skill-card:hover .skill-logo {
+      filter: none;
     }
   }
 
@@ -257,6 +246,10 @@ const StyledSkills = styled.section`
     .skill-card {
       width: 110px;
       height: 110px;
+    }
+
+    .skill-logo {
+      font-size: 2rem;
     }
 
     .skill-name {
