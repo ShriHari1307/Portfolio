@@ -35,7 +35,9 @@ export default function App() {
     const section = document.getElementById(id);
     if (section) {
       // Get the header height dynamically
-      const headerHeight = headerRef.current ? headerRef.current.offsetHeight : 0;
+      const headerHeight = headerRef.current
+        ? headerRef.current.offsetHeight
+        : 0;
 
       // Scroll to the section with offset
       window.scrollTo({
@@ -78,13 +80,15 @@ export default function App() {
                 <span className="text-blue-400">My</span>Portfolio
               </a>
 
+              {/* Hamburger Menu Icon (aligned to the right on small screens) */}
               <button
-                className="block md:hidden text-white focus:outline-none"
+                className="block md:hidden text-white focus:outline-none ml-auto"
                 onClick={toggleMenu}
               >
                 <FaBars size={24} />
               </button>
 
+              {/* Navigation Menu */}
               <nav
                 className={`absolute md:static bg-gray-800 md:bg-transparent top-14 left-0 w-full md:w-auto md:flex items-center space-y-4 md:space-y-0 space-x-0 md:space-x-6 p-4 md:p-0 transition-all duration-300 ${
                   isMenuOpen ? "block" : "hidden"
@@ -101,14 +105,20 @@ export default function App() {
                     {item.label}
                   </button>
                 ))}
-              </nav>
 
-              <button
-                onClick={toggleDarkMode}
-                className="text-yellow-400 hover:text-yellow-500 ml-6"
-              >
-                {isDarkMode ? <FaSun size={24} /> : <FaMoon size={24} />}
-              </button>
+                {/* Dark Mode Toggle centered in the menu */}
+                <div className="w-full flex justify-center mt-4 md:mt-0">
+                  <button
+                    onClick={() => {
+                      toggleDarkMode();
+                      if (isMenuOpen) toggleMenu(); // Close menu if it's open
+                    }}
+                    className="text-yellow-400 hover:text-yellow-500"
+                  >
+                    {isDarkMode ? <FaSun size={24} /> : <FaMoon size={24} />}
+                  </button>
+                </div>
+              </nav>
             </div>
           </header>
 

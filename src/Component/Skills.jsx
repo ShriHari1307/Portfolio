@@ -29,7 +29,7 @@ import { VscAzure } from "react-icons/vsc";
 export default function Skills({ isDarkMode }) {
   const skills = [
     {
-      category: "Programming",
+      category: "Programming Languages",
       items: [
         { name: "Java", logo: <FaJava /> },
         { name: "Python", logo: <FaPython /> },
@@ -37,7 +37,7 @@ export default function Skills({ isDarkMode }) {
       ],
     },
     {
-      category: "Frontend Development",
+      category: "Frontend Technologies",
       items: [
         { name: "React", logo: <FaReact /> },
         { name: "CSS", logo: <FaCss3Alt /> },
@@ -46,18 +46,18 @@ export default function Skills({ isDarkMode }) {
       ],
     },
     {
-      category: "Backend Development",
+      category: "Backend Technologies",
       items: [{ name: "Spring Boot", logo: <SiSpringboot /> }],
     },
     {
-      category: "Cloud",
+      category: "Cloud Platforms",
       items: [
         { name: "AWS", logo: <FaAws /> },
-        { name: "AZURE", logo: <VscAzure /> },
+        { name: "Azure", logo: <VscAzure /> },
       ],
     },
     {
-      category: "Databases",
+      category: "Database Technologies",
       items: [
         { name: "MySQL", logo: <SiMysql /> },
         {
@@ -73,7 +73,7 @@ export default function Skills({ isDarkMode }) {
       ],
     },
     {
-      category: "DevOps & Infrastructure",
+      category: "DevOps Tools",
       items: [
         { name: "Docker", logo: <FaDocker /> },
         { name: "Kubernetes", logo: <SiKubernetes /> },
@@ -81,14 +81,14 @@ export default function Skills({ isDarkMode }) {
       ],
     },
     {
-      category: "Operating System",
+      category: "Operating Systems & Environments",
       items: [
         { name: "Windows", logo: <FaWindows /> },
         { name: "Linux (RHEL 9)", logo: <FaLinux /> },
       ],
     },
     {
-      category: "Version Control",
+      category: "Version Control Systems",
       items: [
         { name: "Git", logo: <FaGitAlt /> },
         { name: "GitHub", logo: <FaGithub /> },
@@ -102,7 +102,7 @@ export default function Skills({ isDarkMode }) {
       ],
     },
     {
-      category: "VM Automation Tool",
+      category: "Virtual Machine Automation Tools",
       items: [{ name: "Vagrant", logo: <SiVagrant /> }],
     },
   ];
@@ -137,9 +137,7 @@ const StyledSkills = styled.section`
   align-items: center;
   padding: 50px 20px;
   background: ${(props) =>
-    props.isDarkMode
-      ? "black"
-      : "linear-gradient(to right, #f0f4f8, #e1e8ee)"};
+    props.isDarkMode ? "black" : "linear-gradient(to right, #f0f4f8, #e1e8ee)"};
   color: ${(props) => (props.isDarkMode ? "#e0e0e0" : "#333333")};
 
   .title {

@@ -86,7 +86,8 @@ export default function Education({ handleScroll, isDarkMode }) {
             icon={<img src="school.png" alt="school icon" className="rounded-full" />}
           >
             <h3 className="text-2xl font-bold">Maharishi Vidya Mandir</h3>
-            <h4 className="text-lg font-semibold mt-1">{`2019 - 2020`}</h4>
+            <h3 className="text-xl font-bold">12th standard</h3>
+            <h4 className="text-lg font-semibold mt-1">{`2020`}</h4>
             <h4 className="text-base font-medium" style={{ color: subTextColor }}>
               Chennai, Tamil Nadu
             </h4>
@@ -121,7 +122,8 @@ export default function Education({ handleScroll, isDarkMode }) {
             icon={<img src="school.png" alt="school icon" className="rounded-full" />}
           >
             <h3 className="text-2xl font-bold">Maharishi Vidya Mandir</h3>
-            <h4 className="text-lg font-semibold mt-1">{`2017 - 2018`}</h4>
+            <h3 className="text-xl font-bold">10th standard</h3>
+            <h4 className="text-lg font-semibold mt-1">{`2018`}</h4>
             <h4 className="text-base font-medium" style={{ color: subTextColor }}>
               Chennai, Tamil Nadu
             </h4>

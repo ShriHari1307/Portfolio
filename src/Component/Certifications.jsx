@@ -35,7 +35,7 @@ export default function Certifications({ isDarkMode }) {
     >
       <div className="container mx-auto">
         <h2 className={`text-4xl font-bold text-center mb-12 ${isDarkMode ? "text-white" : "text-black"}`}>
-          My Certifications
+           Certifications
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {certifications.map((cert, index) => (
@@ -53,14 +53,16 @@ export default function Certifications({ isDarkMode }) {
               <h3 className={`text-2xl font-semibold mb-2 ${isDarkMode ? "text-white" : "text-black"}`}>{cert.title}</h3>
               <p className={`text-sm ${isDarkMode ? "text-gray-400" : "text-gray-600"}`}>{cert.issuer}</p>
               <p className={`text-sm ${isDarkMode ? "text-gray-300" : "text-gray-500"}`}>{cert.date}</p>
-              <p className={`mt-4 text-base ${isDarkMode ? "text-gray-300" : "text-gray-700"}`}>{cert.description}</p>
+              <p className={`mt-4 text-base ${isDarkMode ? "text-gray-300" : "text-gray-700"} text-justify`}>
+                {cert.description}
+              </p>
               <a
                 href={cert.link}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="mt-4 inline-block px-6 py-2 bg-blue-500 text-white rounded-lg transition-all duration-300 hover:bg-blue-600"
               >
-                View Certification
+                View Certificate
               </a>
             </div>
           ))}

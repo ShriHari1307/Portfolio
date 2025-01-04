@@ -29,7 +29,7 @@ function About({ isDarkMode }) {
 
         {/* Description */}
         <p
-          className={`text-sm sm:text-base lg:text-lg leading-relaxed ${
+          className={`text-sm sm:text-base lg:text-lg leading-relaxed text-justify ${
             isDarkMode ? "text-gray-400" : "text-gray-600"
           }`}
         >
