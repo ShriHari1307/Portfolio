@@ -52,9 +52,7 @@ export default function Contact({ isDarkMode }) {
   return (
     <div
       className={`min-h-screen p-6 ${
-        isDarkMode
-          ? "bg-black"
-          : "bg-gradient-to-r from-[#f0f4f8] to-[#e1e8ee]"
+        isDarkMode ? "bg-black" : "bg-gradient-to-r from-[#f0f4f8] to-[#e1e8ee]"
       }`}
     >
       <div className="max-w-6xl mx-auto">
@@ -70,7 +68,8 @@ export default function Contact({ isDarkMode }) {
           <p
             className={`mt-2 ${isDarkMode ? "text-gray-400" : "text-gray-600"}`}
           >
-            Get in touch with us for any questions or inquiries
+            Feel free to reach out if you have any questions, project inquiries,
+            or collaboration opportunities.
           </p>
         </div>
 
