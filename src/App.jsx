@@ -5,7 +5,6 @@ import Projects from "./Component/Projects";
 import { useState, useEffect } from "react";
 import Skills from "./Component/Skills";
 import Education from "./Component/Education";
-// import Blogs from "./Component/Blogs";
 import Preloader from "./Component/Preloader";
 
 export default function App() {
@@ -40,7 +39,7 @@ export default function App() {
       });
     }
     setIsMenuOpen(false);
-    setActiveSection(id); // Manually update activeSection when scrolling through menu
+    setActiveSection(id);
   };
 
   const toggleMenu = () => {
@@ -48,24 +47,34 @@ export default function App() {
   };
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveSection(entry.target.id);
-          }
-        });
-      },
-      { threshold: 0.5 } // Adjusted to trigger when at least 50% of the section is in view
-    );
+    const handleScrollSpy = () => {
+      const sections = document.querySelectorAll("section");
+      const scrollPosition = window.scrollY + window.innerHeight / 2;
 
-    const sections = document.querySelectorAll("section");
-    sections.forEach((section) => {
-      observer.observe(section);
-    });
+      sections.forEach((section) => {
+        const sectionTop = section.offsetTop;
+        const sectionBottom = sectionTop + section.offsetHeight;
 
-    return () => observer.disconnect();
+        if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
+          setActiveSection(section.id);
+        }
+      });
+    };
+
+    window.addEventListener("scroll", handleScrollSpy);
+    // Initial check
+    handleScrollSpy();
+
+    return () => window.removeEventListener("scroll", handleScrollSpy);
   }, []);
+
+  const navItems = [
+    { id: "about", label: "About" },
+    { id: "education", label: "Education" },
+    { id: "projects", label: "Projects" },
+    { id: "skills", label: "Skills" },
+    { id: "contact", label: "Contact" },
+  ];
 
   return (
     <div>
@@ -73,19 +82,16 @@ export default function App() {
         <Preloader onFinish={handlePreloaderFinish} />
       ) : (
         <>
-          {/* Header */}
           <header
             className={`fixed w-full z-10 top-0 p-4 ${
               isDarkMode ? "bg-gray-900 text-white" : "bg-gray-800 text-white"
             }`}
           >
             <div className="container mx-auto flex items-center justify-between">
-              {/* Logo */}
               <a href="#" className="text-2xl font-bold">
                 <span className="text-blue-400">My</span>Portfolio
               </a>
 
-              {/* Mobile Menu Toggle */}
               <button
                 className="block md:hidden text-white focus:outline-none"
                 onClick={toggleMenu}
@@ -93,55 +99,24 @@ export default function App() {
                 <FaBars size={24} />
               </button>
 
-              {/* Navigation */}
               <nav
                 className={`absolute md:static bg-gray-800 md:bg-transparent top-14 left-0 w-full md:w-auto md:flex items-center space-y-4 md:space-y-0 space-x-0 md:space-x-6 p-4 md:p-0 transition-all duration-300 ${
                   isMenuOpen ? "block" : "hidden"
-                }`}
+                } md:flex`}
               >
-                <button
-                  className={`block w-full md:inline hover:text-blue-400 ${
-                    activeSection === "about" ? "text-blue-500" : ""
-                  }`}
-                  onClick={() => handleScroll("about")}
-                >
-                  About
-                </button>
-                <button
-                  className={`block w-full md:inline hover:text-blue-400 ${
-                    activeSection === "education" ? "text-blue-500" : ""
-                  }`}
-                  onClick={() => handleScroll("education")}
-                >
-                  Education
-                </button>
-                <button
-                  className={`block w-full md:inline hover:text-blue-400 ${
-                    activeSection === "projects" ? "text-blue-500" : ""
-                  }`}
-                  onClick={() => handleScroll("projects")}
-                >
-                  Projects
-                </button>
-                <button
-                  className={`block w-full md:inline hover:text-blue-400 ${
-                    activeSection === "skills" ? "text-blue-500" : ""
-                  }`}
-                  onClick={() => handleScroll("skills")}
-                >
-                  Skills
-                </button>
-                <button
-                  className={`block w-full md:inline hover:text-blue-400 ${
-                    activeSection === "contact" ? "text-blue-500" : ""
-                  }`}
-                  onClick={() => handleScroll("contact")}
-                >
-                  Contact
-                </button>
+                {navItems.map((item) => (
+                  <button
+                    key={item.id}
+                    className={`block w-full md:inline transition-colors duration-200 hover:text-blue-400 ${
+                      activeSection === item.id ? "text-blue-500" : "text-white"
+                    }`}
+                    onClick={() => handleScroll(item.id)}
+                  >
+                    {item.label}
+                  </button>
+                ))}
               </nav>
 
-              {/* Dark Mode Toggle Button */}
               <button
                 onClick={toggleDarkMode}
                 className="text-yellow-400 hover:text-yellow-500 ml-6"
@@ -151,21 +126,20 @@ export default function App() {
             </div>
           </header>
 
-          {/* Sections */}
           <main className="pt-20 md:pt-16">
-            <section id="about">
+            <section id="about" className="min-h-screen">
               <About isDarkMode={isDarkMode} />
             </section>
-            <section id="education">
+            <section id="education" className="min-h-screen">
               <Education handleScroll={handleScroll} isDarkMode={isDarkMode} />
             </section>
-            <section id="projects">
+            <section id="projects" className="min-h-screen">
               <Projects isDarkMode={isDarkMode} />
             </section>
-            <section id="skills">
+            <section id="skills" className="min-h-screen">
               <Skills isDarkMode={isDarkMode} />
             </section>
-            <section id="contact">
+            <section id="contact" className="min-h-screen">
               <Contact isDarkMode={isDarkMode} />
             </section>
           </main>
