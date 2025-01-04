@@ -141,10 +141,11 @@ export default function Education({ handleScroll, isDarkMode }) {
             </p>
           </VerticalTimelineElement>
         </VerticalTimeline>
+
         <div className="mt-8 text-center">
           <div className="w-12 h-1 bg-gray-400 mx-auto mb-4"></div>
           <button
-            className={`w-10 h-10 rounded-full mx-auto flex items-center justify-center shadow-md transition-all ${
+            className={`w-10 h-10 rounded-full mx-auto flex items-center justify-center shadow-md transition-all no-hover ${
               isDarkMode ? "bg-gray-800 text-white" : "bg-gray-200 text-black"
             }`}
             onClick={() => handleScroll("projects")}

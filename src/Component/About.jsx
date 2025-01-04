@@ -1,4 +1,4 @@
-import PropTypes from "prop-types"; // Import PropTypes
+import PropTypes from "prop-types";
 import { FaLinkedin } from "react-icons/fa";
 import { FaGithub } from "react-icons/fa";
 import { FaHashnode } from "react-icons/fa6";
@@ -8,30 +8,28 @@ function About({ isDarkMode }) {
   return (
     <section
       id="about"
-      className={`flex flex-col md:flex-row items-center justify-between h-screen px-6 sm:px-10 lg:px-16 py-16 ${
+      className={`flex flex-col md:flex-row items-center justify-between min-h-screen px-4 sm:px-8 lg:px-16 ${
         isDarkMode
           ? "bg-black text-gray-200"
           : "bg-gradient-to-r from-[#f0f4f8] to-[#e1e8ee] text-gray-800"
       }`}
     >
       {/* Left Side (Text Section) */}
-      <div className="w-full md:w-1/2 mb-8 md:mb-0 md:pr-8">
+      <div className="w-full md:w-1/2 mb-10 md:mb-0 md:pr-6 lg:pr-12">
         {/* Typing Animation */}
         <h2
-          className={`text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 ${
+          className={`text-2xl sm:text-3xl lg:text-4xl font-bold mb-6 ${
             isDarkMode ? "text-gray-200" : "text-gray-800"
-          }`}
+          } text-center sm:text-left`}
         >
-          <span
-            className="inline-block overflow-hidden whitespace-nowrap border-r-4 border-blue-500 animate-typing"
-          >
+          <span className="inline-block overflow-hidden whitespace-nowrap border-r-4 border-blue-500 animate-typing">
             Hello! I am <span className="text-blue-500">Shrihari</span>
           </span>
         </h2>
 
         {/* Description */}
         <p
-          className={`text-base sm:text-lg leading-relaxed ${
+          className={`text-sm sm:text-base lg:text-lg leading-relaxed ${
             isDarkMode ? "text-gray-400" : "text-gray-600"
           }`}
         >
@@ -44,7 +42,7 @@ function About({ isDarkMode }) {
           innovative solutions to real-world challenges.
         </p>
 
-        <div className="mt-8 flex flex-wrap gap-4">
+        <div className="mt-8 flex flex-col sm:flex-row sm:justify-start items-center gap-4">
           <a
             href="https://drive.google.com/file/d/1AEpVnXWGXYeHRIAkUVA_nvsqSi8mlJmB/view?usp=sharing"
             target="_blank"
@@ -70,22 +68,46 @@ function About({ isDarkMode }) {
         </div>
 
         {/* Social Icons */}
-        <div className="mt-6 flex space-x-4 sm:space-x-6">
-          {[{ icon: FaLinkedin, url: "https://www.linkedin.com/in/tshrihari/", label: "LinkedIn", color: isDarkMode ? "text-blue-400" : "text-blue-700" },
-            { icon: FaGithub, url: "https://github.com/ShriHari1307", label: "GitHub", color: isDarkMode ? "text-white" : "text-black" },
-            { icon: FaHashnode, url: "https://hashnode.com/@Shrihari13", label: "Hashnode", color: isDarkMode ? "text-white" : "text-black" },
-            { icon: SiLeetcode, url: "https://leetcode.com/u/TSHRIHARI13/", label: "LeetCode", color: isDarkMode ? "text-white" : "text-black" }
+        <div className="mt-6 flex flex-wrap gap-4 justify-center md:justify-start">
+          {[
+            {
+              icon: FaLinkedin,
+              url: "https://www.linkedin.com/in/tshrihari/",
+              label: "LinkedIn",
+              color: isDarkMode ? "text-blue-400" : "text-blue-700",
+            },
+            {
+              icon: FaGithub,
+              url: "https://github.com/ShriHari1307",
+              label: "GitHub",
+              color: isDarkMode ? "text-white" : "text-black",
+            },
+            {
+              icon: FaHashnode,
+              url: "https://hashnode.com/@Shrihari13",
+              label: "Hashnode",
+              color: isDarkMode ? "text-white" : "text-black",
+            },
+            {
+              icon: SiLeetcode,
+              url: "https://leetcode.com/u/TSHRIHARI13/",
+              label: "LeetCode",
+              color: isDarkMode ? "text-white" : "text-black",
+            },
           ].map(({ icon: Icon, url, label, color }, index) => (
             <a
               key={index}
               href={url}
               target="_blank"
               rel="noopener noreferrer"
-              className="relative group transform hover:scale-125 transition duration-300 ease-in-out"
+              className="group relative transform md:hover:scale-110 transition duration-300"
             >
-              <Icon size={30} className={`${color} transition-transform duration-300 group-hover:translate-y-1`} />
+              <Icon
+                size={30}
+                className={`${color} transition-transform duration-300`}
+              />
               <span
-                className={`absolute top-full left-1/2 transform -translate-x-1/2 text-center text-xs sm:text-sm font-semibold mt-2 opacity-0 group-hover:opacity-100 transition duration-300 z-10 ${color}`}
+                className={`absolute top-full left-1/2 transform -translate-x-1/2 text-xs sm:text-sm font-semibold mt-2 opacity-0 md:group-hover:opacity-100 transition duration-300 z-10 ${color}`}
               >
                 {label}
               </span>
@@ -95,18 +117,17 @@ function About({ isDarkMode }) {
       </div>
 
       {/* Right Side (Image Section) */}
-      <div className="w-full md:w-1/3">
+      <div className="w-full md:w-1/3 flex justify-center">
         <img
-          src="public/boy-image.png"
+          src="/boy-image.png"
           alt="Profile"
-          className="w-full h-auto rounded-lg shadow-none object-cover"
+          className="w-2/3 sm:w-1/2 md:w-full h-auto rounded-lg object-cover"
         />
       </div>
     </section>
   );
 }
 
-// Prop validation
 About.propTypes = {
   isDarkMode: PropTypes.bool.isRequired,
 };

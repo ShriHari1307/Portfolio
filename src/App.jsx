@@ -2,7 +2,7 @@ import { FaMoon, FaSun, FaBars } from "react-icons/fa";
 import About from "./Component/About";
 import Contact from "./Component/Contact";
 import Projects from "./Component/Projects";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Skills from "./Component/Skills";
 import Education from "./Component/Education";
 import Preloader from "./Component/Preloader";
@@ -13,6 +13,7 @@ export default function App() {
   const [activeSection, setActiveSection] = useState("about");
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [loading, setLoading] = useState(true);
+  const headerRef = useRef(null);
 
   const toggleDarkMode = () => {
     setIsDarkMode(!isDarkMode);
@@ -33,12 +34,16 @@ export default function App() {
   const handleScroll = (id) => {
     const section = document.getElementById(id);
     if (section) {
-      const headerHeight = document.querySelector("header").offsetHeight;
+      // Get the header height dynamically
+      const headerHeight = headerRef.current ? headerRef.current.offsetHeight : 0;
+
+      // Scroll to the section with offset
       window.scrollTo({
         top: section.offsetTop - headerHeight,
         behavior: "smooth",
       });
     }
+
     setIsMenuOpen(false);
     setActiveSection(id);
   };
@@ -46,57 +51,6 @@ export default function App() {
   const toggleMenu = () => {
     setIsMenuOpen((prev) => !prev);
   };
-
-  useEffect(() => {
-    const handleScrollSpy = () => {
-      const sections = document.querySelectorAll("section");
-      const header = document.querySelector("header");
-      const headerHeight = header ? header.offsetHeight : 0;
-      const scrollPosition =
-        window.scrollY +
-        headerHeight +
-        (window.innerWidth < 768 ? 50 : window.innerHeight / 2);
-      sections.forEach((section) => {
-        const sectionTop = section.offsetTop - headerHeight;
-        const sectionBottom = sectionTop + section.offsetHeight;
-
-        if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
-          setActiveSection(section.id);
-        }
-      });
-    };
-
-    const setInitialScrollPosition = () => {
-      const headerHeight = document.querySelector("header")?.offsetHeight || 0;
-      const aboutSection = document.getElementById("about");
-
-      if (aboutSection) {
-        window.scrollTo({
-          top: aboutSection.offsetTop - headerHeight,
-          behavior: "smooth",
-        });
-      }
-    };
-
-    // Set initial scroll position when the page loads
-    setInitialScrollPosition();
-
-    // Add scroll event listener to handle dynamic changes while scrolling
-    window.addEventListener("scroll", handleScrollSpy);
-
-    // Adding resize event listener for screen size changes (optional)
-    const handleResize = () => {
-      setInitialScrollPosition(); // Adjust scroll position based on screen size change
-    };
-
-    window.addEventListener("resize", handleResize);
-
-    // Cleanup event listeners on component unmount
-    return () => {
-      window.removeEventListener("scroll", handleScrollSpy);
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
 
   const navItems = [
     { id: "about", label: "About" },
@@ -108,13 +62,14 @@ export default function App() {
   ];
 
   return (
-    <div>
+    <div className="min-h-screen">
       {loading ? (
         <Preloader onFinish={handlePreloaderFinish} />
       ) : (
         <>
           <header
-            className={`fixed w-full z-10 top-0 p-4 ${
+            ref={headerRef}
+            className={`sticky top-0 w-full z-50 p-4 ${
               isDarkMode ? "bg-gray-900 text-white" : "bg-gray-800 text-white"
             }`}
           >
@@ -157,7 +112,7 @@ export default function App() {
             </div>
           </header>
 
-          <main className="pt-20 md:pt-16 sm:pt-0 sm:scroll-padding-top">
+          <main>
             <section id="about" className="min-h-screen">
               <About isDarkMode={isDarkMode} />
             </section>
@@ -179,7 +134,7 @@ export default function App() {
           </main>
 
           <footer
-            className={`w-full p-4 mt-auto ${
+            className={`w-full p-4 ${
               isDarkMode ? "bg-gray-900 text-white" : "bg-gray-800 text-white"
             }`}
           >
