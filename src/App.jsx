@@ -31,17 +31,65 @@ export default function App() {
     }
   }, [isDarkMode]);
 
+  // Improved scroll spy functionality
+  useEffect(() => {
+    const handleScrollSpy = () => {
+      // Get all sections
+      const sections = navItems.map(item => document.getElementById(item.id));
+      const headerHeight = headerRef.current ? headerRef.current.offsetHeight : 0;
+      const scrollPosition = window.scrollY + headerHeight + 50; // Add buffer for better detection
+
+      // Find the current section
+      let currentSection = sections[0]?.id; // Default to first section
+      
+      sections.forEach(section => {
+        if (!section) return;
+        
+        const sectionTop = section.offsetTop;
+        const sectionBottom = sectionTop + section.offsetHeight;
+        
+        // Check if we're in this section (with some padding)
+        if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
+          currentSection = section.id;
+        }
+      });
+
+      if (currentSection) {
+        setActiveSection(currentSection);
+      }
+    };
+
+    // Throttle the scroll event for better performance
+    let ticking = false;
+    const scrollHandler = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          handleScrollSpy();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+
+    window.addEventListener('scroll', scrollHandler);
+    // Initial check
+    handleScrollSpy();
+
+    return () => window.removeEventListener('scroll', scrollHandler);
+  }, []);
+
   const handleScroll = (id) => {
     const section = document.getElementById(id);
     if (section) {
-      // Get the header height dynamically
       const headerHeight = headerRef.current
         ? headerRef.current.offsetHeight
         : 0;
 
-      // Scroll to the section with offset
+      // Add a small offset to account for padding
+      const offset = headerHeight + 2; // You can adjust this value
+
       window.scrollTo({
-        top: section.offsetTop - headerHeight,
+        top: section.offsetTop - offset,
         behavior: "smooth",
       });
     }
@@ -80,7 +128,6 @@ export default function App() {
                 <span className="text-blue-400">My</span>Portfolio
               </a>
 
-              {/* Hamburger Menu Icon (aligned to the right on small screens) */}
               <button
                 className="block md:hidden text-white focus:outline-none ml-auto"
                 onClick={toggleMenu}
@@ -88,7 +135,6 @@ export default function App() {
                 <FaBars size={24} />
               </button>
 
-              {/* Navigation Menu */}
               <nav
                 className={`absolute md:static bg-gray-800 md:bg-transparent top-14 left-0 w-full md:w-auto md:flex items-center space-y-4 md:space-y-0 space-x-0 md:space-x-6 p-4 md:p-0 transition-all duration-300 ${
                   isMenuOpen ? "block" : "hidden"
@@ -106,12 +152,11 @@ export default function App() {
                   </button>
                 ))}
 
-                {/* Dark Mode Toggle centered in the menu */}
                 <div className="w-full flex justify-center mt-4 md:mt-0">
                   <button
                     onClick={() => {
                       toggleDarkMode();
-                      if (isMenuOpen) toggleMenu(); // Close menu if it's open
+                      if (isMenuOpen) toggleMenu();
                     }}
                     className="text-yellow-400 hover:text-yellow-500"
                   >
