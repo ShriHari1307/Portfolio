@@ -34,7 +34,7 @@ export default function Projects({ isDarkMode }) {
     <section
       id="projects"
       className={`${
-        isDarkMode ? "bg-[#1e1e1e] text-gray-200" : "bg-gray-100 text-gray-800"
+        isDarkMode ? "bg-black text-gray-200" : "bg-gradient-to-r from-[#f0f4f8] to-[#e1e8ee] text-gray-800"
       } flex flex-col items-center justify-center py-12`}
     >
       <div className="w-full max-w-6xl px-4">
@@ -56,7 +56,7 @@ export default function Projects({ isDarkMode }) {
               previewLink={project.previewLink}
               codeLink={project.codeLink}
               imageUrl={project.imageUrl}
-              isDarkMode={isDarkMode} // Pass the dark mode state to the Card component if needed
+              isDarkMode={isDarkMode} 
             />
           ))}
         </div>

@@ -8,25 +8,30 @@ function About({ isDarkMode }) {
   return (
     <section
       id="about"
-      className={`h-screen flex items-center justify-between py-16 px-16 ${
-        isDarkMode ? "bg-[#1e1e1e] text-gray-200" : "bg-gray-100 text-gray-800"
+      className={`flex flex-col md:flex-row items-center justify-between h-screen px-6 sm:px-10 lg:px-16 py-16 ${
+        isDarkMode
+          ? "bg-black text-gray-200"
+          : "bg-gradient-to-r from-[#f0f4f8] to-[#e1e8ee] text-gray-800"
       }`}
     >
-      <div className="w-1/2 pr-8">
+      {/* Left Side (Text Section) */}
+      <div className="w-full md:w-1/2 mb-8 md:mb-0 md:pr-8">
         {/* Typing Animation */}
         <h2
-          className={`text-6xl font-bold mb-6 ${
+          className={`text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 ${
             isDarkMode ? "text-gray-200" : "text-gray-800"
           }`}
         >
-          <span className="inline-block overflow-hidden whitespace-nowrap border-r-4 border-blue-500 animate-typing">
+          <span
+            className="inline-block overflow-hidden whitespace-nowrap border-r-4 border-blue-500 animate-typing"
+          >
             Hello! I am <span className="text-blue-500">Shrihari</span>
           </span>
         </h2>
 
         {/* Description */}
         <p
-          className={`mt-4 text-lg leading-relaxed ${
+          className={`text-base sm:text-lg leading-relaxed ${
             isDarkMode ? "text-gray-400" : "text-gray-600"
           }`}
         >
@@ -39,12 +44,12 @@ function About({ isDarkMode }) {
           innovative solutions to real-world challenges.
         </p>
 
-        <div className="mt-8 flex space-x-4">
+        <div className="mt-8 flex flex-wrap gap-4">
           <a
             href="https://drive.google.com/file/d/1AEpVnXWGXYeHRIAkUVA_nvsqSi8mlJmB/view?usp=sharing"
             target="_blank"
             rel="noopener noreferrer"
-            className="px-6 py-3 bg-blue-500 text-white font-bold rounded-lg shadow-md hover:bg-blue-600 transition duration-300"
+            className="px-4 sm:px-6 py-2 sm:py-3 bg-blue-500 text-white font-bold rounded-lg shadow-md hover:bg-blue-600 transition duration-300 text-sm sm:text-base"
           >
             Get My Resume
           </a>
@@ -58,102 +63,43 @@ function About({ isDarkMode }) {
                 });
               }
             }}
-            className="px-6 py-3 bg-gray-800 text-white font-bold rounded-lg shadow-md hover:bg-gray-700 transition duration-300"
+            className="px-4 sm:px-6 py-2 sm:py-3 bg-gray-800 text-white font-bold rounded-lg shadow-md hover:bg-gray-700 transition duration-300 text-sm sm:text-base"
           >
             Contact Me
           </button>
         </div>
 
-        <div className="mt-6 flex space-x-6">
-          <a
-            href="https://www.linkedin.com/in/tshrihari/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="relative group transform hover:scale-125 transition duration-300 ease-in-out"
-          >
-            <FaLinkedin
-              size={40}
-              className={`${
-                isDarkMode ? "text-blue-400" : "text-blue-700"
-              } transition-transform duration-300 group-hover:translate-y-1`}
-            />
-            <span
-              className={`absolute top-full left-1/2 transform -translate-x-1/2 text-center text-sm font-semibold mt-2 opacity-0 group-hover:opacity-100 transition duration-300 z-10 ${
-                isDarkMode ? "text-blue-400" : "text-blue-700"
-              }`}
+        {/* Social Icons */}
+        <div className="mt-6 flex space-x-4 sm:space-x-6">
+          {[{ icon: FaLinkedin, url: "https://www.linkedin.com/in/tshrihari/", label: "LinkedIn", color: isDarkMode ? "text-blue-400" : "text-blue-700" },
+            { icon: FaGithub, url: "https://github.com/ShriHari1307", label: "GitHub", color: isDarkMode ? "text-white" : "text-black" },
+            { icon: FaHashnode, url: "https://hashnode.com/@Shrihari13", label: "Hashnode", color: isDarkMode ? "text-white" : "text-black" },
+            { icon: SiLeetcode, url: "https://leetcode.com/u/TSHRIHARI13/", label: "LeetCode", color: isDarkMode ? "text-white" : "text-black" }
+          ].map(({ icon: Icon, url, label, color }, index) => (
+            <a
+              key={index}
+              href={url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="relative group transform hover:scale-125 transition duration-300 ease-in-out"
             >
-              LinkedIn
-            </span>
-          </a>
-          <a
-            href="https://github.com/ShriHari1307"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="relative group transform hover:scale-125 transition duration-300 ease-in-out"
-          >
-            <FaGithub
-              size={40}
-              className={`${
-                isDarkMode ? "text-white" : "text-black"
-              } transition-transform duration-300 group-hover:translate-y-1`}
-            />
-            <span
-              className={`absolute top-full left-1/2 transform -translate-x-1/2 text-center text-sm font-semibold mt-2 opacity-0 group-hover:opacity-100 transition duration-300 z-10 ${
-                isDarkMode ? "text-white" : "text-black"
-              }`}
-            >
-              GitHub
-            </span>
-          </a>
-          <a
-            href="https://hashnode.com/@Shrihari13"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="relative group transform hover:scale-125 transition duration-300 ease-in-out"
-          >
-            <FaHashnode
-              size={40}
-              className={`${
-                isDarkMode ? "text-white" : "text-black"
-              } transition-transform duration-300 group-hover:translate-y-1`}
-            />
-            <span
-              className={`absolute top-full left-1/2 transform -translate-x-1/2 text-center text-sm font-semibold mt-2 opacity-0 group-hover:opacity-100 transition duration-300 z-10 ${
-                isDarkMode ? "text-white" : "text-black"
-              }`}
-            >
-              Hashnode
-            </span>
-          </a>
-          <a
-            href="https://leetcode.com/u/TSHRIHARI13/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="relative group transform hover:scale-125 transition duration-300 ease-in-out"
-          >
-            <SiLeetcode
-              size={40}
-              className={`${
-                isDarkMode ? "text-white" : "text-black"
-              } transition-transform duration-300 group-hover:translate-y-1`}
-            />
-            <span
-              className={`absolute top-full left-1/2 transform -translate-x-1/2 text-center text-sm font-semibold mt-2 opacity-0 group-hover:opacity-100 transition duration-300 z-10 ${
-                isDarkMode ? "text-white" : "text-black"
-              }`}
-            >
-              LeetCode
-            </span>
-          </a>
+              <Icon size={30} className={`${color} transition-transform duration-300 group-hover:translate-y-1`} />
+              <span
+                className={`absolute top-full left-1/2 transform -translate-x-1/2 text-center text-xs sm:text-sm font-semibold mt-2 opacity-0 group-hover:opacity-100 transition duration-300 z-10 ${color}`}
+              >
+                {label}
+              </span>
+            </a>
+          ))}
         </div>
       </div>
 
-      {/* Right Side (Image) */}
-      <div className="w-1/3 pl-8">
+      {/* Right Side (Image Section) */}
+      <div className="w-full md:w-1/3">
         <img
           src="public/boy-image.png"
           alt="Profile"
-          className="w-full h-auto rounded-lg shadow-lg object-cover"
+          className="w-full h-auto rounded-lg shadow-none object-cover"
         />
       </div>
     </section>

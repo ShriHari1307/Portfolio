@@ -12,7 +12,7 @@ export default function App() {
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [activeSection, setActiveSection] = useState("about");
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [loading, setLoading] = useState(true); 
+  const [loading, setLoading] = useState(true);
 
   const toggleDarkMode = () => {
     setIsDarkMode(!isDarkMode);
@@ -40,6 +40,7 @@ export default function App() {
       });
     }
     setIsMenuOpen(false);
+    setActiveSection(id); // Manually update activeSection when scrolling through menu
   };
 
   const toggleMenu = () => {
@@ -51,23 +52,25 @@ export default function App() {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            setActiveSection(entry.target.id.toLowerCase());
+            setActiveSection(entry.target.id);
           }
         });
       },
-      { threshold: 0.2 } // Adjust threshold
+      { threshold: 0.5 } // Adjusted to trigger when at least 50% of the section is in view
     );
+
     const sections = document.querySelectorAll("section");
     sections.forEach((section) => {
       observer.observe(section);
     });
+
     return () => observer.disconnect();
   }, []);
 
   return (
     <div>
       {loading ? (
-        <Preloader onFinish={handlePreloaderFinish} /> 
+        <Preloader onFinish={handlePreloaderFinish} />
       ) : (
         <>
           {/* Header */}
@@ -162,13 +165,11 @@ export default function App() {
             <section id="skills">
               <Skills isDarkMode={isDarkMode} />
             </section>
-            {/* <section>
-              <Blogs />
-            </section> */}
             <section id="contact">
               <Contact isDarkMode={isDarkMode} />
             </section>
           </main>
+
           <footer
             className={`w-full p-4 mt-auto ${
               isDarkMode ? "bg-gray-900 text-white" : "bg-gray-800 text-white"

@@ -15,6 +15,7 @@ export default {
         preloadtyping:"typing 1s steps(30, end), blink 0.5s step-end infinite",
         'slide-in': 'slide-in 0.5s ease-out forwards', // Slide-in animation
         fadeIn: 'fadeIn 2s ease-in-out', // Add fadeIn animation
+
       },
       keyframes: {
         typing: {
