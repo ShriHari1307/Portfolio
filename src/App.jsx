@@ -7,6 +7,7 @@ import Skills from "./Component/Skills";
 import Education from "./Component/Education";
 import Preloader from "./Component/Preloader";
 import Certifications from "./Component/Certifications";
+import Intership from "./Component/Intership";
 
 export default function App() {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -105,6 +106,7 @@ export default function App() {
   const navItems = [
     { id: "about", label: "About" },
     { id: "education", label: "Education" },
+    { id: "Internship", label: "Internship" },
     { id: "projects", label: "Projects" },
     { id: "skills", label: "Skills" },
     { id: "certifications", label: "Certification" },
@@ -173,6 +175,9 @@ export default function App() {
             </section>
             <section id="education" className="min-h-screen">
               <Education handleScroll={handleScroll} isDarkMode={isDarkMode} />
+            </section>
+            <section id="Internship" className="min-h-screen">
+              <Intership handleScroll={handleScroll} isDarkMode={isDarkMode} />
             </section>
             <section id="projects">
               <Projects isDarkMode={isDarkMode} />

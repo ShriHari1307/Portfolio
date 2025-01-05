@@ -5,10 +5,24 @@ import { FaHashnode } from "react-icons/fa6";
 import { SiLeetcode } from "react-icons/si";
 
 function About({ isDarkMode }) {
+  const handleScrollToContact = () => {
+    const contactSection = document.getElementById("contact");
+    const headerHeight = document.querySelector("header")?.offsetHeight || 75; // Default to 75px if no header found.
+
+    if (contactSection) {
+      const contactSectionTop =
+        contactSection.getBoundingClientRect().top + window.scrollY;
+      window.scrollTo({
+        top: contactSectionTop - headerHeight, // Adjust for header height
+        behavior: "smooth",
+      });
+    }
+  };
+
   return (
     <section
       id="about"
-      className={`flex flex-col md:flex-row items-center justify-between min-h-screen px-4 sm:px-8 pt-[75px] lg:px-16  ${
+      className={`flex flex-col md:flex-row items-center justify-between min-h-screen px-4 sm:px-8 pt-[75px] lg:px-16 ${
         isDarkMode
           ? "bg-black text-gray-200"
           : "bg-gradient-to-r from-[#f0f4f8] to-[#e1e8ee] text-gray-800"
@@ -52,15 +66,7 @@ function About({ isDarkMode }) {
             Get My Resume
           </a>
           <button
-            onClick={() => {
-              const contactSection = document.getElementById("contact");
-              if (contactSection) {
-                contactSection.scrollIntoView({
-                  behavior: "smooth",
-                  block: "start",
-                });
-              }
-            }}
+            onClick={handleScrollToContact}
             className="px-4 sm:px-6 py-2 sm:py-3 bg-gray-800 text-white font-bold rounded-lg shadow-md hover:bg-gray-700 transition duration-300 text-sm sm:text-base"
           >
             Contact Me

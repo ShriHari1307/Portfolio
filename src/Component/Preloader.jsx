@@ -1,25 +1,97 @@
-import PropTypes from "prop-types";
-import { useEffect } from "react";
+import PropTypes from 'prop-types';
+import { useEffect, useState, useRef } from 'react';
 
-export default function Preloader({ onFinish }) {
+const Preloader = ({ onFinish }) => {
+  const [progress, setProgress] = useState(0);
+  const textRef = useRef(null); // Reference for the text container
+  const [textWidth, setTextWidth] = useState(0); // State to hold text width
+
   useEffect(() => {
-    const timer = setTimeout(() => {
-      onFinish(); 
-    }, 1000); 
+    // Update text width on mount
+    if (textRef.current) {
+      setTextWidth(textRef.current.offsetWidth);
+    }
 
-    return () => clearTimeout(timer);
+    const interval = setInterval(() => {
+      setProgress(prev => {
+        if (prev >= 100) {
+          clearInterval(interval);
+          onFinish();
+          return 100;
+        }
+        return prev + 2;
+      });
+    }, 30);
+
+    return () => clearInterval(interval);
   }, [onFinish]);
 
   return (
-    <div className="fixed top-0 left-0 right-0 bottom-0 flex items-center justify-center bg-black z-50">
-      <div className="text-white text-6xl font-bold">
-        <div className="text-6xl font-extrabold text-center animate-preloadtyping overflow-hidden whitespace-nowrap">
-          Welcome
+    <div className="fixed inset-0 flex flex-col items-center justify-center bg-black z-50 overflow-hidden">
+      {/* Background shapes */}
+      <div className="absolute inset-0 opacity-20">
+        <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-purple-500 rounded-full mix-blend-screen filter blur-xl animate-pulse" />
+        <div className="absolute top-1/3 right-1/4 w-64 h-64 bg-blue-500 rounded-full mix-blend-screen filter blur-xl animate-pulse delay-75" />
+        <div className="absolute bottom-1/4 left-1/3 w-64 h-64 bg-teal-500 rounded-full mix-blend-screen filter blur-xl animate-pulse delay-150" />
+      </div>
+
+      {/* Main content */}
+      <div className="relative z-10 text-center">
+        {/* Main text animation */}
+        <div ref={textRef} className="mb-12">
+          {'SHRIHARI'.split('').map((letter, index) => (
+            <span
+              key={index}
+              className="inline-block text-7xl font-bold text-white opacity-0 animate-fadeIn"
+              style={{
+                animationDelay: `${index * 50}ms`,
+                animationFillMode: 'forwards',
+                textShadow: '0 0 20px rgba(255,255,255,0.5)',
+              }}
+            >
+              {letter}
+            </span>
+          ))}
+        </div>
+
+        {/* Progress bar */}
+        <div
+          className="h-1 bg-gray-800 rounded-full overflow-hidden"
+          style={{
+            width: textWidth, // Set width dynamically based on text width
+          }}
+        >
+          <div
+            className="h-full bg-gradient-to-r from-purple-500 via-blue-500 to-teal-500 transition-all duration-300 ease-out"
+            style={{ width: `${progress}%` }}
+          />
+        </div>
+
+        {/* Progress text */}
+        <div className="mt-4 text-white font-mono text-sm tracking-wider">
+          Loading {progress}%
         </div>
       </div>
     </div>
   );
-}
+};
+
+// Add required keyframes for animations
+const style = document.createElement('style');
+style.textContent = `
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes float {
+    0% { transform: translateY(0) translateX(0); opacity: 0; }
+    50% { opacity: 0.5; }
+    100% { transform: translateY(-100px) translateX(20px); opacity: 0; }
+  }
+`;
+document.head.appendChild(style);
+
+export default Preloader;
 
 Preloader.propTypes = {
   onFinish: PropTypes.func.isRequired,

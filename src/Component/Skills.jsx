@@ -21,6 +21,7 @@ import {
   SiAnsible,
   SiSonarqube,
   SiVagrant,
+  SiPostman 
 } from "react-icons/si";
 import { IoLogoJavascript } from "react-icons/io5";
 import PropTypes from "prop-types";
@@ -47,7 +48,9 @@ export default function Skills({ isDarkMode }) {
     },
     {
       category: "Backend Technologies",
-      items: [{ name: "Spring Boot", logo: <SiSpringboot /> }],
+      items: [{ name: "Spring Boot", logo: <SiSpringboot /> },
+        { name: "PostMan", logo: <SiPostman  /> }
+      ],
     },
     {
       category: "Cloud Platforms",
@@ -213,10 +216,6 @@ const StyledSkills = styled.section`
     box-shadow: 0 15px 30px
       ${(props) =>
         props.isDarkMode ? "rgba(0, 0, 0, 0.8)" : "rgba(0, 0, 0, 0.2)"};
-  }
-
-  .skill-card:hover .skill-logo {
-    filter: blur(3px);
   }
 
   .skill-card:hover .skill-name {

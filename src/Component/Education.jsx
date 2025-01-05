@@ -47,27 +47,44 @@ export default function Education({ handleScroll, isDarkMode }) {
             }}
             contentArrowStyle={{ borderRight: `7px solid ${arrowColor}` }}
             iconStyle={{ background: arrowColor }}
-            icon={<img src="college.png" alt="college icon" className="rounded-full" />}
+            icon={
+              <img
+                src="college.png"
+                alt="college icon"
+                className="rounded-full"
+              />
+            }
           >
-            <h3 className="text-2xl font-bold">Panimalar Engineering College</h3>
+            <h3 className="text-2xl font-bold">
+              Panimalar Engineering College
+            </h3>
             <h4 className="text-lg font-semibold mt-1">{`2020 - 2024`}</h4>
-            <h4 className="text-base font-medium" style={{ color: subTextColor }}>
+            <h4
+              className="text-base font-medium"
+              style={{ color: subTextColor }}
+            >
               Chennai, Tamil Nadu
             </h4>
             <p className="mt-3">
               Computer Science and Engineering
               <br />
               <span className="font-bold">8.78 GPA</span>
-              <ul className="list-disc pl-6 mt-3 space-y-2">
+              <ul className="list-disc pl-6 mt-3 space-y-2 text-justify">
                 <li>
-                  Participated in the <strong>Kavach Hackathon</strong> as a team
-                  leader.
+                  Successfully led a team in the prestigious{" "}
+                  <strong>Kavach Hackathon</strong>, demonstrating leadership,
+                  strategic planning, and collaborative problem-solving skills.
                 </li>
                 <li>
-                  Gained knowledge in AWS Cloud, Java, Computer Networks, DSA, ML,
-                  and other technologies.
+                  Acquired hands-on expertise in advanced technologies including
+                  AWS Cloud, Java, Computer Networks, Data Structures and
+                  Algorithms (DSA), and Machine Learning (ML).
                 </li>
-                <li>Earned multiple global certifications in AWS and Red Hat.</li>
+                <li>
+                  Achieved globally recognized certifications, including AWS and
+                  Red Hat, showcasing proficiency in cloud computing and system
+                  administration.
+                </li>
               </ul>
             </p>
           </VerticalTimelineElement>
@@ -83,26 +100,42 @@ export default function Education({ handleScroll, isDarkMode }) {
             }}
             contentArrowStyle={{ borderRight: `7px solid ${arrowColor}` }}
             iconStyle={{ background: arrowColor }}
-            icon={<img src="school.png" alt="school icon" className="rounded-full" />}
+            icon={
+              <img
+                src="school.png"
+                alt="school icon"
+                className="rounded-full"
+              />
+            }
           >
             <h3 className="text-2xl font-bold">Maharishi Vidya Mandir</h3>
             <h3 className="text-xl font-bold">12th standard</h3>
             <h4 className="text-lg font-semibold mt-1">{`2020`}</h4>
-            <h4 className="text-base font-medium" style={{ color: subTextColor }}>
+            <h4
+              className="text-base font-medium"
+              style={{ color: subTextColor }}
+            >
               Chennai, Tamil Nadu
             </h4>
             <p className="mt-3">
-              <ul className="list-disc pl-6 mt-3 space-y-2">
+              <ul className="list-disc pl-6 mt-3 space-y-2 text-justify">
                 <li className="font-medium">
                   Designed and developed mini projects using C++, focusing on
                   problem-solving and optimization.
                 </li>
                 <li className="font-medium">
                   Gained in-depth knowledge of MySQL and data management
-                  techniques.
+                  techniques, including designing and querying relational
+                  databases.
                 </li>
                 <li className="font-medium">
-                  Expanded my understanding of algorithms and data structures.
+                  Expanded my understanding of algorithms and data structures,
+                  laying a strong foundation for efficient coding practices.
+                </li>
+                <li className="font-medium">
+                  Built a Student management system as a capstone project,
+                  integrating database connectivity with a user-friendly
+                  interface.
                 </li>
               </ul>
             </p>
@@ -119,25 +152,41 @@ export default function Education({ handleScroll, isDarkMode }) {
             }}
             contentArrowStyle={{ borderRight: `7px solid ${arrowColor}` }}
             iconStyle={{ background: arrowColor }}
-            icon={<img src="school.png" alt="school icon" className="rounded-full" />}
+            icon={
+              <img
+                src="school.png"
+                alt="school icon"
+                className="rounded-full"
+              />
+            }
           >
             <h3 className="text-2xl font-bold">Maharishi Vidya Mandir</h3>
             <h3 className="text-xl font-bold">10th standard</h3>
             <h4 className="text-lg font-semibold mt-1">{`2018`}</h4>
-            <h4 className="text-base font-medium" style={{ color: subTextColor }}>
+            <h4
+              className="text-base font-medium"
+              style={{ color: subTextColor }}
+            >
               Chennai, Tamil Nadu
             </h4>
             <p className="mt-3">
-              <ul className="list-disc pl-6 mt-3 space-y-2">
+              <ul className="list-disc pl-6 mt-3 space-y-2 text-justify">
                 <li className="font-medium">
                   Wrote my first program in C, a <strong>Hello World</strong>{" "}
                   application, sparking my passion for programming.
                 </li>
                 <li className="font-medium">
-                  Explored the basics of computer science and technology.
+                  Explored the basics of computer science and technology,
+                  including understanding hardware components and software
+                  functionality.
                 </li>
                 <li className="font-medium">
-                  Laid the foundation for a lifelong interest in tech.
+                  Gained early exposure to logical thinking and problem-solving
+                  techniques through beginner-level coding exercises.
+                </li>
+                <li className="font-medium">
+                  Participated in group activities and projects, enhancing
+                  collaboration and communication skills.
                 </li>
               </ul>
             </p>
