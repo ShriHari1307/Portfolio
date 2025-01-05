@@ -50,7 +50,7 @@ const StyledWrapper = styled.div`
 
   .card:hover {
     transform: translateY(-8px);
-    box-shadow: 0px 15px 30px var(--shadow-dark), 0px 0px 20px rgba(173, 216, 230, 0.5); /* Light blue shadow added */
+    box-shadow: 0px 15px 30px var(--shadow-dark);
   }
 
   /* Image container */

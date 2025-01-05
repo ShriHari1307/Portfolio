@@ -191,6 +191,8 @@ export default function App() {
             <section id="contact" className="min-h-screen">
               <Contact isDarkMode={isDarkMode} />
             </section>
+            
+
           </main>
 
           <footer
