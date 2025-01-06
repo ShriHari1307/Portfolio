@@ -147,7 +147,7 @@ export default function App() {
                   </button>
                 ))}
 
-                <div className="hidden md:block w-full flex justify-center mt-4 md:mt-0">
+                <div className=" md:block w-full flex justify-center mt-4 md:mt-0">
                   <button
                     onClick={() => {
                       toggleDarkMode();

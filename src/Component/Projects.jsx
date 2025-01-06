@@ -61,8 +61,7 @@ export default function Projects({ isDarkMode }) {
         "Maven",
         "AWS EC2",
       ],
-      liveDemo: "https://example.com/live-demo/aws-cloud-quest",
-      github: "https://github.com/yourusername/aws-cloud-quest",
+      github: "https://github.com/ShriHari1307/CICD-Project",
       image: "pipeline.png",
     },
   ];
@@ -106,7 +105,7 @@ export default function Projects({ isDarkMode }) {
       Projects
     </h2>
 
-    <div className="relative flex items-center justify-center group mt-8"> {/* Optional margin if needed */}
+    <div className="relative flex items-center justify-center group mt-8"> 
       <button
         className="absolute left-0 top-1/2 transform -translate-y-1/2 p-3 bg-black bg-opacity-50 text-white rounded-full transition-all duration-300 opacity-0 visibility-hidden group-hover:opacity-100 group-hover:visibility-visible focus:opacity-100 focus:visibility-visible focus:outline-none z-10"
         onClick={handlePrev}
@@ -114,7 +113,7 @@ export default function Projects({ isDarkMode }) {
         <FaArrowLeft size={20} />
       </button>
 
-      <div className="w-full sm:w-5/6 md:w-4/5 lg:w-2/3 xl:w-3/5 overflow-hidden mt-10"> {/* Added mt-10 here for additional gap */}
+      <div className="w-full sm:w-5/6 md:w-4/5 lg:w-2/3 xl:w-3/5 overflow-hidden mt-10"> 
         <div
           className="flex transition-transform duration-500"
           style={{
