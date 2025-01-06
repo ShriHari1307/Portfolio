@@ -7,10 +7,8 @@ export default function Projects({ isDarkMode }) {
     {
       title: "Deploying 3-tier application in Kubernetes",
       description: [
-        "This project involved deploying a complete 3-tier architecture application on AWS EKS.",
-        "The application was containerized using Docker, and Dockerfiles were created for each tier.",
-        "These containers were then deployed and orchestrated within AWS EKS, ensuring high availability and scalability.",
-        " The architecture comprises a frontend, backend, and database layer, each deployed as separate services, allowing seamless communication and efficient management of the application on the cloud.",
+        "Deployed a 3-tier application on AWS EKS with Docker containers for the frontend, backend, and database layers.",
+        "Ensured high availability and scalability by orchestrating the services on Kubernetes within AWS cloud."
       ],
       tools: [
         "Docker",
@@ -21,7 +19,7 @@ export default function Projects({ isDarkMode }) {
         "Maven",
         "VSCode",
         "AWS RDS",
-        "Spring boot",
+        "Spring Boot",
       ],
       github: "https://github.com/ShriHari1307/EKSThreeTier",
       image: "kubernetes-proj.jpg",
@@ -29,10 +27,8 @@ export default function Projects({ isDarkMode }) {
     {
       title: "Insurance Agent Management Using React",
       description: [
-        "This project is developed to simplify the management of agents. It implements create, read, update, and delete functionalities for efficient handling of agent data.",
-        "The backend is built using Spring Boot, ensuring scalability and robustness.",
-        "Additionally, it offers a user-friendly interface that allows seamless interaction with agent management tasks.",
-        "The system supports real-time updates to ensure that the agent data is always up-to-date, reducing the need for manual interventions.",
+        "Built a React app for managing agents with CRUD functionality and a Spring Boot backend for scalability.",
+        "Supports real-time updates to manage agent data efficiently with a user-friendly interface."
       ],
       tools: [
         "React",
@@ -49,9 +45,8 @@ export default function Projects({ isDarkMode }) {
     {
       title: "Complete CICD Pipeline using Jenkins",
       description: [
-        "This project involved setting up a complete CI/CD pipeline using Jenkins, integrated with code quality tools like SonarQube and Nexus OSS repository.",
-        "The pipeline automates the build, test, and deployment processes, ensuring faster and more reliable software delivery. Jenkins handles the automation, while SonarQube ensures code quality by analyzing and reporting on potential issues.",
-        "Nexus OSS is used to store and manage the build artifacts, and the entire pipeline is deployed on AWS EKS, enabling efficient scaling and management of the application in a containerized environment.",
+        "Set up a complete CI/CD pipeline with Jenkins, integrating SonarQube for code quality and Nexus OSS for artifact management.",
+        "Automated build, test, and deployment on AWS EKS for scalable containerized application management."
       ],
       tools: [
         "Jenkins",
@@ -68,7 +63,7 @@ export default function Projects({ isDarkMode }) {
       image: "pipeline.png",
     },
   ];
-
+  
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const handlePrev = () => {
