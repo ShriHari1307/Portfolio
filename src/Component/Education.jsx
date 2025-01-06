@@ -7,13 +7,12 @@ import "react-vertical-timeline-component/style.min.css";
 
 export default function Education({ handleScroll, isDarkMode }) {
   const backgroundColor = isDarkMode
-    ? "linear-gradient(to right, #0f2027, #203a43, #2c5364)" // Dark blue-green gradient
-    : "linear-gradient(to right, #f9f9f9, #e4f1fe)"; // Light gray-blue gradient
-
-  const textColor = isDarkMode ? "#ecf0f1" : "#2c3e50"; // Light for dark mode, dark for light mode
-  const subTextColor = isDarkMode ? "#b0bec5" : "#607d8b"; // Muted colors for subtext
-  const arrowColor = isDarkMode ? "#2c5364" : "#90caf9"; // Complementary gradient shades
-  const lineColor = isDarkMode ? "#ecf0f1" : "#455a64"; // Line color matching the theme
+    ? "linear-gradient(to right, #0f2027, #203a43, #2c5364)" 
+    : "linear-gradient(to right, #f9f9f9, #e4f1fe)"; 
+  const textColor = isDarkMode ? "#ecf0f1" : "#2c3e50"; 
+  const subTextColor = isDarkMode ? "#b0bec5" : "#607d8b";
+  const arrowColor = isDarkMode ? "#2c5364" : "#90caf9"; 
+  const lineColor = isDarkMode ? "#ecf0f1" : "#455a64"; 
 
   return (
     <section id="education">
@@ -199,7 +198,7 @@ export default function Education({ handleScroll, isDarkMode }) {
             className={`w-10 h-10 rounded-full mx-auto flex items-center justify-center shadow-md transition-all no-hover ${
               isDarkMode ? "bg-gray-800 text-white" : "bg-gray-200 text-black"
             }`}
-            onClick={() => handleScroll("projects")}
+            onClick={() => handleScroll("Internship")}
           >
             ↓
           </button>

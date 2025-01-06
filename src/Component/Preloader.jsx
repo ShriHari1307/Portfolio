@@ -3,11 +3,10 @@ import { useEffect, useState, useRef } from 'react';
 
 const Preloader = ({ onFinish }) => {
   const [progress, setProgress] = useState(0);
-  const textRef = useRef(null); // Reference for the text container
-  const [textWidth, setTextWidth] = useState(0); // State to hold text width
+  const textRef = useRef(null); 
+  const [textWidth, setTextWidth] = useState(0); 
 
   useEffect(() => {
-    // Update text width on mount
     if (textRef.current) {
       setTextWidth(textRef.current.offsetWidth);
     }
@@ -58,7 +57,7 @@ const Preloader = ({ onFinish }) => {
         <div
           className="h-1 bg-gray-800 rounded-full overflow-hidden"
           style={{
-            width: textWidth, // Set width dynamically based on text width
+            width: textWidth, 
           }}
         >
           <div
@@ -76,7 +75,6 @@ const Preloader = ({ onFinish }) => {
   );
 };
 
-// Add required keyframes for animations
 const style = document.createElement('style');
 style.textContent = `
   @keyframes fadeIn {

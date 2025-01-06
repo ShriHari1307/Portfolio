@@ -7,7 +7,7 @@ export default function Internship({ isDarkMode }) {
         isDarkMode
           ? "bg-black text-gray-200"
           : "bg-gradient-to-r from-[#f0f4f8] to-[#e1e8ee] text-gray-800"
-      } flex flex-col justify-between items-center p-6 transition-colors duration-300 pb-12`} // Removed h-screen for dynamic height
+      } flex flex-col justify-between items-center p-6 transition-colors duration-300 pb-12`} 
     >
       <h1 className="text-4xl font-extrabold text-center mt-12 mb-8 tracking-tight ">
         Internship Experience

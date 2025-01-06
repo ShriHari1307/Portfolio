@@ -7,13 +7,13 @@ import { SiLeetcode } from "react-icons/si";
 function About({ isDarkMode }) {
   const handleScrollToContact = () => {
     const contactSection = document.getElementById("contact");
-    const headerHeight = document.querySelector("header")?.offsetHeight || 75; // Default to 75px if no header found.
+    const headerHeight = document.querySelector("header")?.offsetHeight || 75; 
 
     if (contactSection) {
       const contactSectionTop =
         contactSection.getBoundingClientRect().top + window.scrollY;
       window.scrollTo({
-        top: contactSectionTop - headerHeight, // Adjust for header height
+        top: contactSectionTop - headerHeight,
         behavior: "smooth",
       });
     }

@@ -32,24 +32,19 @@ export default function App() {
     }
   }, [isDarkMode]);
 
-  // Improved scroll spy functionality
   useEffect(() => {
     const handleScrollSpy = () => {
-      // Get all sections
       const sections = navItems.map(item => document.getElementById(item.id));
       const headerHeight = headerRef.current ? headerRef.current.offsetHeight : 0;
-      const scrollPosition = window.scrollY + headerHeight + 50; // Add buffer for better detection
-
-      // Find the current section
-      let currentSection = sections[0]?.id; // Default to first section
+      const scrollPosition = window.scrollY + headerHeight + 50; 
+      let currentSection = sections[0]?.id; 
       
       sections.forEach(section => {
         if (!section) return;
         
         const sectionTop = section.offsetTop;
         const sectionBottom = sectionTop + section.offsetHeight;
-        
-        // Check if we're in this section (with some padding)
+      
         if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
           currentSection = section.id;
         }
@@ -60,7 +55,6 @@ export default function App() {
       }
     };
 
-    // Throttle the scroll event for better performance
     let ticking = false;
     const scrollHandler = () => {
       if (!ticking) {
@@ -73,7 +67,6 @@ export default function App() {
     };
 
     window.addEventListener('scroll', scrollHandler);
-    // Initial check
     handleScrollSpy();
 
     return () => window.removeEventListener('scroll', scrollHandler);
@@ -85,9 +78,7 @@ export default function App() {
       const headerHeight = headerRef.current
         ? headerRef.current.offsetHeight
         : 0;
-
-      // Add a small offset to account for padding
-      const offset = headerHeight + 2; // You can adjust this value
+      const offset = headerHeight + 2; 
 
       window.scrollTo({
         top: section.offsetTop - offset,
