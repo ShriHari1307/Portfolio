@@ -80,9 +80,9 @@ export default function Certifications({ isDarkMode }) {
           Certifications
         </h2>
 
-        <div className="relative flex items-center justify-center">
+        <div className="relative flex items-center justify-center group">
           <button
-            className="absolute top-4 left-4 p-3 bg-black bg-opacity-50 text-white rounded-full transition-all duration-300 hover:bg-opacity-80 z-10"
+            className="absolute left-0 top-1/2 transform -translate-y-1/2 p-3 bg-black bg-opacity-50 text-white rounded-full transition-all duration-300 opacity-0 visibility-hidden group-hover:opacity-100 group-hover:visibility-visible focus:opacity-100 focus:visibility-visible focus:outline-none z-10"
             onClick={handlePrev}
           >
             <FaArrowLeft size={20} />
@@ -155,7 +155,7 @@ export default function Certifications({ isDarkMode }) {
           </div>
 
           <button
-            className="absolute top-4 right-4 p-3 bg-black bg-opacity-50 text-white rounded-full transition-all duration-300 hover:bg-opacity-80 z-10"
+            className="absolute right-0 top-1/2 transform -translate-y-1/2 p-3 bg-black bg-opacity-50 text-white rounded-full transition-all duration-300 opacity-0 visibility-hidden group-hover:opacity-100 group-hover:visibility-visible focus:opacity-100 focus:visibility-visible focus:outline-none z-10"
             onClick={handleNext}
           >
             <FaArrowRight size={20} />

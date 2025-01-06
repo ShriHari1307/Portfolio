@@ -18,6 +18,7 @@ import {
   SiKubernetes,
   SiSpringboot,
   SiMysql,
+  SiTerraform,
   SiAnsible,
   SiSonarqube,
   SiVagrant,
@@ -108,6 +109,12 @@ export default function Skills({ isDarkMode }) {
       category: "Virtual Machine Automation Tools",
       items: [{ name: "Vagrant", logo: <SiVagrant /> }],
     },
+    {
+      category: "Infrastructure as Code (IaC)",
+      items: [
+        { name: "Terraform", logo: <SiTerraform /> },
+      ],
+    }
   ];
 
   return (

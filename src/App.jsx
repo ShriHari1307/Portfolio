@@ -34,17 +34,19 @@ export default function App() {
 
   useEffect(() => {
     const handleScrollSpy = () => {
-      const sections = navItems.map(item => document.getElementById(item.id));
-      const headerHeight = headerRef.current ? headerRef.current.offsetHeight : 0;
-      const scrollPosition = window.scrollY + headerHeight + 50; 
-      let currentSection = sections[0]?.id; 
-      
-      sections.forEach(section => {
+      const sections = navItems.map((item) => document.getElementById(item.id));
+      const headerHeight = headerRef.current
+        ? headerRef.current.offsetHeight
+        : 0;
+      const scrollPosition = window.scrollY + headerHeight + 50;
+      let currentSection = sections[0]?.id;
+
+      sections.forEach((section) => {
         if (!section) return;
-        
+
         const sectionTop = section.offsetTop;
         const sectionBottom = sectionTop + section.offsetHeight;
-      
+
         if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
           currentSection = section.id;
         }
@@ -66,10 +68,10 @@ export default function App() {
       }
     };
 
-    window.addEventListener('scroll', scrollHandler);
+    window.addEventListener("scroll", scrollHandler);
     handleScrollSpy();
 
-    return () => window.removeEventListener('scroll', scrollHandler);
+    return () => window.removeEventListener("scroll", scrollHandler);
   }, []);
 
   const handleScroll = (id) => {
@@ -78,7 +80,7 @@ export default function App() {
       const headerHeight = headerRef.current
         ? headerRef.current.offsetHeight
         : 0;
-      const offset = headerHeight + 2; 
+      const offset = headerHeight + 2;
 
       window.scrollTo({
         top: section.offsetTop - offset,
@@ -145,7 +147,7 @@ export default function App() {
                   </button>
                 ))}
 
-                <div className="w-full flex justify-center mt-4 md:mt-0">
+                <div className="hidden md:block w-full flex justify-center mt-4 md:mt-0">
                   <button
                     onClick={() => {
                       toggleDarkMode();
@@ -159,6 +161,22 @@ export default function App() {
               </nav>
             </div>
           </header>
+
+          {/* Sticky dark mode button for mobile */}
+          <div
+            className={`md:hidden fixed bottom-4 right-4 z-50 p-4 rounded-full shadow-lg hover:shadow-2xl transition-all duration-300 ${
+              isDarkMode ? "bg-yellow-400" : "bg-gray-800"
+            }`}
+          >
+            <button
+              onClick={() => toggleDarkMode()}
+              className={`text-xl flex items-center justify-center ${
+                isDarkMode ? "text-gray-800" : "text-white"
+              }`}
+            >
+              {isDarkMode ? <FaSun size={24} /> : <FaMoon size={24} />}
+            </button>
+          </div>
 
           <main>
             <section id="about" className="min-h-screen">
@@ -182,8 +200,6 @@ export default function App() {
             <section id="contact" className="min-h-screen">
               <Contact isDarkMode={isDarkMode} />
             </section>
-            
-
           </main>
 
           <footer
