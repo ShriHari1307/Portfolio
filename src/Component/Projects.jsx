@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 
 export default function Projects({ isDarkMode }) {
@@ -8,7 +8,7 @@ export default function Projects({ isDarkMode }) {
       title: "Deploying 3-tier application in Kubernetes",
       description: [
         "Deployed a 3-tier application on AWS EKS with Docker containers for the frontend, backend, and database layers.",
-        "Ensured high availability and scalability by orchestrating the services on Kubernetes within AWS cloud."
+        "Ensured high availability and scalability by orchestrating the services on Kubernetes within AWS cloud.",
       ],
       tools: [
         "Docker",
@@ -28,7 +28,7 @@ export default function Projects({ isDarkMode }) {
       title: "Insurance Agent Management Using React",
       description: [
         "Built a React app for managing agents with CRUD functionality and a Spring Boot backend for scalability.",
-        "Supports real-time updates to manage agent data efficiently with a user-friendly interface."
+        "Supports real-time updates to manage agent data efficiently with a user-friendly interface.",
       ],
       tools: [
         "React",
@@ -46,7 +46,7 @@ export default function Projects({ isDarkMode }) {
       title: "Complete CICD Pipeline using Jenkins",
       description: [
         "Set up a complete CI/CD pipeline with Jenkins, integrating SonarQube for code quality and Nexus OSS for artifact management.",
-        "Automated build, test, and deployment on AWS EKS for scalable containerized application management."
+        "Automated build, test, and deployment on AWS EKS for scalable containerized application management.",
       ],
       tools: [
         "Jenkins",
@@ -63,7 +63,7 @@ export default function Projects({ isDarkMode }) {
       image: "pipeline.png",
     },
   ];
-  
+
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const handlePrev = () => {
@@ -146,7 +146,7 @@ export default function Projects({ isDarkMode }) {
                       <div
                         className={`mt-4 text-base ${
                           isDarkMode ? "text-gray-300" : "text-gray-700"
-                        } text-justify`}
+                        } text-justify leading-relaxed tracking-wide`}
                       >
                         <ul>
                           {project.description.map((desc, index) => (
@@ -160,6 +160,7 @@ export default function Projects({ isDarkMode }) {
                           {project.tools.join(", ")}
                         </p>
                       </div>
+
                       <div className="mt-4 flex space-x-6">
                         {project.liveDemo && (
                           <a

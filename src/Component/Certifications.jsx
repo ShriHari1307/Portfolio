@@ -9,9 +9,8 @@ export default function Certifications({ isDarkMode }) {
       issuer: "Amazon Web Services",
       date: "July 2023",
       description: [
-        "Gained foundational knowledge of AWS cloud services and their key offerings, including cloud security, architecture, compliance, and pricing models.",
-        "Acquired skills to identify AWS service offerings and understand cloud best practices, enabling efficient cloud-based solutions for businesses.",
-        "Developed a strong understanding of global infrastructure, shared responsibility models, and cloud economics, empowering informed decision-making for cloud adoption strategies.",
+        "Gained foundational knowledge of AWS cloud services, including security, architecture, and pricing models.",
+        "Developed skills to identify AWS services and implement cloud best practices for businesses.",
       ],
       image: "aws-certified-cloud-practitioner.png",
       link: "https://bit.ly/shri-aws-practitioner",
@@ -21,10 +20,8 @@ export default function Certifications({ isDarkMode }) {
       issuer: "RedHat",
       date: "September 2023",
       description: [
-        "Achieved RedHat Certified System Administrator status, scoring a perfect 300/300 on the certification exam.",
-        "Demonstrated advanced expertise in system administration, automation, configuration, and troubleshooting tasks on Red Hat Enterprise Linux.",
-        "Mastered essential skills for managing enterprise systems, such as deploying, securing, and maintaining servers in demanding production environments.",
-        "Proficient in tasks like configuring storage, setting up basic networking, and deploying containerized applications, ensuring robust and efficient system performance.",
+        "Achieved RedHat Certified System Administrator status with a perfect score of 300/300.",
+        "Demonstrated expertise in system administration, automation, and containerized application deployment.",
       ],
       image: "RHCSA.png",
       link: "https://bit.ly/461smze",
@@ -34,10 +31,8 @@ export default function Certifications({ isDarkMode }) {
       issuer: "AWS",
       date: "July 2023",
       description: [
-        "Completed the AWS Cloud Quest challenge, gaining hands-on experience in key cloud concepts, including networking, storage, compute, and security.",
-        "Engaged in interactive learning by solving practical, real-world scenarios that simulate professional challenges.",
-        "Built a comprehensive understanding of designing and implementing cloud-based solutions with AWS tools and services.",
-        "Explored advanced cloud functionalities such as monitoring, cost optimization, and workload migration, gaining practical insights into the cloud ecosystem.",
+        "Completed AWS Cloud Quest, gaining hands-on experience with cloud concepts like networking, storage, and security.",
+        "Built practical skills in designing and implementing cloud-based solutions with AWS tools.",
       ],
       image: "aws-quest.png",
       link: "https://bit.ly/shri-aws-quest",
@@ -63,7 +58,7 @@ export default function Certifications({ isDarkMode }) {
       setCurrentIndex((prevIndex) =>
         prevIndex === certifications.length - 1 ? 0 : prevIndex + 1
       );
-    }, 3000); 
+    }, 3000);
     return () => clearInterval(interval);
   }, [certifications.length]);
 
