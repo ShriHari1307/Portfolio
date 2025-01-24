@@ -37,7 +37,7 @@ function About({ isDarkMode }) {
           } text-center sm:text-left`}
         >
           <span className="inline-block overflow-hidden whitespace-nowrap border-r-4 border-blue-500 animate-typing">
-            Hello! I am <span className="text-blue-500">Shrihar</span>
+            Hello! I am <span className="text-blue-500">Shrihari</span>
           </span>
         </h2>
 
