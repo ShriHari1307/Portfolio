@@ -153,67 +153,45 @@ const StyledSkills = styled.section`
   .title {
     font-size: 2.5rem;
     font-weight: bold;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
     text-align: center;
     color: ${(props) => (props.isDarkMode ? "#ffffff" : "#333")};
   }
 
   .skills-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
-    max-width: 1200px;
     width: 100%;
+    max-width: 1200px;
   }
 
   .category {
-    flex: 1 1 calc(33.33% - 20px); /* 3 cards per row with spacing */
-    max-width: calc(33.33% - 20px);
-    background: ${(props) => (props.isDarkMode ? "#222" : "#fff")};
-    border-radius: 12px;
-    box-shadow: 0 5px 15px
-      ${(props) =>
-        props.isDarkMode ? "rgba(0, 0, 0, 0.7)" : "rgba(0, 0, 0, 0.1)"};
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    transition: transform 0.3s ease-in-out;
-    cursor: pointer;
-  }
-
-  .category:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 10px 25px
-      ${(props) =>
-        props.isDarkMode ? "rgba(0, 0, 0, 0.8)" : "rgba(0, 0, 0, 0.2)"};
+    margin-bottom: 40px;
+    padding: 10px;
   }
 
   .category-title {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    text-align: center;
     font-weight: bold;
-    margin-bottom: 15px;
     color: ${(props) => (props.isDarkMode ? "#ffffff" : "#333")};
   }
 
   .skills-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-    gap: 15px;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 20px;
     width: 100%;
     justify-items: center;
   }
 
   .skill-card {
-    width: 100px;
-    height: 100px;
-    background: ${(props) => (props.isDarkMode ? "#333" : "#f9f9f9")};
-    border-radius: 10px;
-    box-shadow: 0 4px 10px
+    width: 160px;
+    height: 160px;
+    background: ${(props) => (props.isDarkMode ? "#333333" : "#ffffff")};
+    border-radius: 12px;
+    box-shadow: 0 8px 15px
       ${(props) =>
-        props.isDarkMode ? "rgba(0, 0, 0, 0.5)" : "rgba(0, 0, 0, 0.1)"};
+        props.isDarkMode ? "rgba(0, 0, 0, 0.6)" : "rgba(0, 0, 0, 0.1)"};
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -224,33 +202,56 @@ const StyledSkills = styled.section`
   }
 
   .skill-logo {
-    font-size: 2.5rem;
+    font-size: 3rem;
+    transition: filter 0.3s ease-in-out;
     color: ${(props) => (props.isDarkMode ? "#00aaff" : "#0077cc")};
   }
 
   .skill-name {
-    margin-top: 8px;
-    font-size: 1rem;
+    position: absolute;
+    bottom: 10px;
+    font-size: 1.1rem;
     font-weight: bold;
+    opacity: 0;
     color: ${(props) => (props.isDarkMode ? "#ffffff" : "#333")};
+    text-align: center;
+    transition: opacity 0.3s ease-in-out;
   }
 
   .skill-card:hover {
     transform: scale(1.1);
-    box-shadow: 0 8px 20px
+    box-shadow: 0 15px 30px
       ${(props) =>
         props.isDarkMode ? "rgba(0, 0, 0, 0.8)" : "rgba(0, 0, 0, 0.2)"};
   }
 
+  .skill-card:hover .skill-name {
+    opacity: 1;
+  }
+
   @media (max-width: 768px) {
-    .category {
-      flex: 1 1 calc(50% - 20px); /* 2 cards per row */
-      max-width: calc(50% - 20px);
+    .skill-name {
+      opacity: 1;
+      bottom: 5px;
+    }
+
+    .skill-card:hover {
+      transform: none;
+    }
+
+    .skill-card:hover .skill-logo {
+      filter: none;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .skills-grid {
+      grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
     }
 
     .skill-card {
-      width: 80px;
-      height: 80px;
+      width: 110px;
+      height: 110px;
     }
 
     .skill-logo {
@@ -261,32 +262,7 @@ const StyledSkills = styled.section`
       font-size: 0.9rem;
     }
   }
-
-  @media (max-width: 480px) {
-    .category {
-      flex: 1 1 calc(100% - 20px); /* 1 card per row */
-      max-width: calc(100% - 20px);
-    }
-
-    .skills-grid {
-      grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
-    }
-
-    .skill-card {
-      width: 70px;
-      height: 70px;
-    }
-
-    .skill-logo {
-      font-size: 1.8rem;
-    }
-
-    .skill-name {
-      font-size: 0.8rem;
-    }
-  }
 `;
-
 
 Skills.propTypes = {
   isDarkMode: PropTypes.bool.isRequired,
