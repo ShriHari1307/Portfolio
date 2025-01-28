@@ -167,7 +167,7 @@ const StyledSkills = styled.section`
   }
 
   .category-card {
-    background: ${(props) => (props.isDarkMode ? "#333333" : "#ffffff")};
+    background: ${(props) => (props.isDarkMode ? "#1f2937" : "#ffffff")};
     border-radius: 12px;
     box-shadow: 0 8px 15px
       ${(props) =>
