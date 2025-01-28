@@ -58,7 +58,7 @@ function About({ isDarkMode }) {
 
         <div className="mt-8 flex flex-col sm:flex-row sm:justify-start items-center gap-4">
           <a
-            href="https://drive.google.com/file/d/1GCUY7a0aTcxIM5TVAaXxifoWphGDxDHc/view?usp=sharing"
+            href="https://drive.google.com/file/d/1GCUY7a0aTcxIM5TVAaXxifoWphGDxDHc/view?usp=drive_link"
             target="_blank"
             rel="noopener noreferrer"
             className="px-4 sm:px-6 py-2 sm:py-3 bg-blue-500 text-white font-bold rounded-lg shadow-md hover:bg-blue-600 transition duration-300 text-sm sm:text-base"
